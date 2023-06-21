@@ -19,6 +19,7 @@ export default function Desktop() {
                 <h1 className='align-middle text-lheader font-bold text-white'>EZ Budget</h1>
                 {user ?
                     <div className='flex'>
+                        <DropdownMenu />
                         <AccountMenu />
                     </div>
                     :
@@ -33,6 +34,48 @@ export default function Desktop() {
 
 
 function AccountMenu() {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const handleMouseEnter = () => {
+        setIsOpen(true);
+    };
+
+    const handleMouseLeave = () => {
+        setIsOpen(false);
+    };
+
+    const AccountMenuItem = (props) => {
+        return (
+            <li className='hover:bg-gray-600 rounded px-3 py-2'>
+                <Link to={props.link} className="">
+                    <p className='whitespace-nowrap text-xsmall'>{props.text}</p>
+                </Link>
+            </li>
+        );
+    };
+
+    return (
+        <div className="relative flex flex-col" onMouseLeave={handleMouseLeave}>
+            <button
+                className="flex gap-3 hover:bg-menu_button_hover h-fit px-3 py-2 my-auto rounded font-semibold"
+                onMouseEnter={handleMouseEnter}>
+                <p>Account</p>
+                <UserAccountIcon className="my-auto" />
+            </button>
+            {isOpen && (
+                <ul className='flex flex-col absolute z-10 rounded-md bg-menu_button' style={{ top: "100%", right: 0 }} onMouseLeave={handleMouseLeave} >
+                    <AccountMenuItem text="Account Settings" link="/account" />
+                    <button className='hover:bg-gray-600 rounded px-3 py-2 flex gap-3' onClick={signOutUser}>
+                        <p className='text-xsmall'>Sign Out</p>
+                        <LogoutIcon className='my-auto' />
+                    </button>
+                </ul>
+            )}
+        </div>
+    );
+}
+
+function DropdownMenu() {
     const [isOpen, setIsOpen] = useState(false);
 
     const handleMouseEnter = () => {
