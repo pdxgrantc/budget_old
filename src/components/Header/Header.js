@@ -5,7 +5,7 @@ import Mobile from './Mobile'
 
 export default function Header() {
     return (
-        <>
+        <div className='text-dark_grey'>
             <div className='on_mobile:hidden flex flex-col'>
                 <Desktop />
                 <div className='h-[2rem]'></div>
@@ -13,6 +13,6 @@ export default function Header() {
             <div className='on_desktop:hidden'>
                 <Mobile />
             </div>
-        </>
+        </div>
     )
 }

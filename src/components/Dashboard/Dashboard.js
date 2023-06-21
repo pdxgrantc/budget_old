@@ -9,7 +9,7 @@ import SignIn from '../SignIn/SignIn'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 
-export default function Home() {
+export default function Dashboard() {
   const [user] = useAuthState(auth)
 
   if (!user) {

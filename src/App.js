@@ -2,6 +2,10 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Home from "./components/Home/Home";
+import Dashboard from "./components/Dashboard/Dashboard";
+import Transactions from "./components/Transactions/Transactions";
+import BudgetSettings from "./components/BudgetSettings/BudgetSettings";
+import AccountSettings from "./components/AccountSettings/AccountSettings";
 import FourOFour from "./components/FourOFour/FourOFour";
 
 function App() {
@@ -9,6 +13,10 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/transactions" element={<Transactions />} />
+        <Route path="/budget-settings" element={<BudgetSettings />} />
+        <Route path="/account-settings" element={<AccountSettings />} />
         <Route path="*" element={<FourOFour />} />
         <Route path='/404' element={<FourOFour />} />
       </Routes>
