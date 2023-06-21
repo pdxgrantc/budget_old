@@ -21,7 +21,7 @@ export default function Desktop() {
                 </Link>
                 {user ?
                     <div className='flex'>
-                        <Link to='/dashboard' className='flex gap-3 hover:bg-menu_button_hover h-fit px-3 py-2 my-auto rounded font-semibold'>
+                        <Link to='/dashboard' className='flex gap-3 hover:bg-menu_button_hover h-fit px-3 py-2 my-auto rounded-button font-semibold'>
                             {window.location.pathname === '/dashboard' ? (
                                 <>
                                     <p className='text-small text-white'>Dashboard</p>
@@ -32,7 +32,7 @@ export default function Desktop() {
                                 </>
                             )}
                         </Link>
-                        <Link to='/transactions' className='flex gap-3 hover:bg-menu_button_hover h-fit px-3 py-2 my-auto rounded font-semibold'>
+                        <Link to='/transactions' className='flex gap-3 hover:bg-menu_button_hover h-fit px-3 py-2 my-auto rounded-button font-semibold'>
                             {window.location.pathname === '/transactions' ? (
                                 <>
                                     <p className='text-small text-white'>Transactions</p>
@@ -69,7 +69,7 @@ function AccountMenu() {
 
     const AccountMenuItem = (props) => {
         return (
-            <li className='hover:bg-gray-600 rounded px-3 py-2'>
+            <li className='hover:bg-menu_button_hover rounded-button px-3 py-2'>
                 <Link to={props.link} className="">
                     <p className='whitespace-nowrap text-small'>{props.text}</p>
                 </Link>
@@ -80,7 +80,7 @@ function AccountMenu() {
     return (
         <div className="relative flex flex-col" onMouseLeave={handleMouseLeave}>
             <button
-                className="flex gap-3 hover:bg-menu_button_hover h-fit px-3 py-2 my-auto rounded font-semibold"
+                className="flex gap-3 hover:bg-menu_button_hover h-fit px-3 py-2 my-auto rounded-button font-semibold"
                 onMouseEnter={handleMouseEnter}>
                 <p>My Account</p>
                 <UserAccountIcon className="my-auto" />
@@ -89,7 +89,7 @@ function AccountMenu() {
                 <ul className='flex flex-col absolute z-10 rounded-md bg-menu_button' style={{ top: "100%", right: 0 }} onMouseLeave={handleMouseLeave} >
                     <AccountMenuItem text="Budget Settings" link="/budget-settings" />
                     <AccountMenuItem text="Account Settings" link="/account-settings" />
-                    <button className='hover:bg-gray-600 rounded px-3 py-2 flex gap-3' onClick={signOutUser}>
+                    <button className='hover:bg-menu_button_hover rounded-button px-3 py-2 flex gap-3' onClick={signOutUser}>
                         <p className='text-small'>Sign Out</p>
                         <LogoutIcon className='my-auto' />
                     </button>

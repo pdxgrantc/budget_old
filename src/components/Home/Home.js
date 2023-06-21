@@ -24,7 +24,12 @@ export default function Home() {
     return (
       <div className='w-screen min-h-screen text-small bg-bg text'>
         <Header />
-        Home
+        <div className="mx-[5rem] rounded bg-black py-[2rem] px-[4rem]">
+          <div className='items-baseline h-fit'>
+            <p className='text-sheader font-thin mb-[-12px]'>Welcome</p>
+            <h1 className='text-lheader font-semibold'>{user.displayName}</h1>
+          </div>
+        </div>
         <Footer />
       </div>
     )

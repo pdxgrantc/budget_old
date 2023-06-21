@@ -17,43 +17,30 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 
-export const signInWithEmailPassword = async (email, password) => {
+export const signInWithGoogle = async () => {
+    const auth = getAuth();
+    const provider = new GoogleAuthProvider();
+
     try {
-        // Get the Firebase Auth instance
-        const auth = getAuth();
+        const result = await signInWithPopup(auth, provider);
+        const db = getFirestore();
+        const userRef = doc(db, 'users', result.user.uid);
+        const userDocSnap = await getDoc(userRef);
 
-        // Sign in with email and password
-        const userCredential = await signInWithEmailAndPassword(auth, email, password);
-
-        // Return the user credential
-        return userCredential.user;
+        if (!userDocSnap.exists()) {
+            await setDoc(userRef, {
+                displayName: result.user.displayName,
+                email: result.user.email,
+                photoURL: result.user.photoURL,
+                uid: result.user.uid,
+                transactionTypes: ['Groceries', 'Resturaunts', 'Household Supplies', 'Rent', 'Utilities', 'Repairs and Maintenance', 'Entertainment', 'Other'],
+                createdAt: new Date(),
+            });
+        }
     } catch (error) {
-        // Handle any errors that occurred during sign-in
-        throw new Error(error.message);
+        console.log(error);
     }
 };
-
-
-export const signInWithGoogle = () => {
-    const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider).then((result) => {
-        // create users collection in firestore
-        const userRef = doc(db, "users", result.user.uid);
-        getDoc(userRef).then((docSnap) => {
-            if (!docSnap.exists()) {
-                setDoc(userRef, {
-                    displayName: result.user.displayName,
-                    email: result.user.email,
-                    photoURL: result.user.photoURL,
-                    uid: result.user.uid,
-                    createdAt: new Date(),
-                });
-            }
-        });
-    }).catch((error) => {
-        console.log(error);
-    });
-}
 
 export const signOutUser = () => {
     signOut(auth);
