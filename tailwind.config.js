@@ -46,7 +46,7 @@ module.exports = {
     fontSize: {
       xsmall: ['1.1rem'],
       small: ['1.5rem'],
-      base: ['2rem'],
+      normal: ['2rem'],
       small_header: ['2.25rem'],
       header: ['2.75rem'],
       lheader: ['3.25rem'],
