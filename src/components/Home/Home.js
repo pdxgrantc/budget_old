@@ -6,7 +6,7 @@ import Footer from '../Footer/Footer'
 
 export default function Home() {
   return (
-    <div className='w-screen min-h-screen text-base bg-bg text-text'>
+    <div className='w-screen min-h-screen bg-bg text-text'>
       <Header />
       <div>Home</div>
       <Footer />
