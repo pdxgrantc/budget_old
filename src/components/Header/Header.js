@@ -1,18 +1,18 @@
 import React from 'react'
 
-// Components
-import Mobile from './Mobile'
 import Desktop from './Desktop'
+import Mobile from './Mobile'
 
 export default function Header() {
-  return (
-    <>
-      <div className='on_mobile:hidden'>
-        <Desktop />
-      </div>
-      <div className='on_desktop:hidden'>
-        <Mobile />
-      </div>
-    </>
-  )
+    return (
+        <>
+            <div className='on_mobile:hidden flex flex-col'>
+                <Desktop />
+                <div className='h-[2rem]'></div>
+            </div>
+            <div className='on_desktop:hidden'>
+                <Mobile />
+            </div>
+        </>
+    )
 }
