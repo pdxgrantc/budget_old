@@ -41,7 +41,7 @@ export default function SignIn() {
 
     return (
         <div className='h-full w-full'>
-            <div className='flex flex-col gap-5 rounded-md my-[3rem] mx-auto bg-black py-[2rem] px-[3.5rem] w-fit text-small'>
+            <div className='flex flex-col gap-3 rounded-md my-[3rem] mx-auto bg-black py-[2rem] px-[3.5rem] w-fit text-small'>
                 <h1 className='text-lheader font-bold text-white'>Sign In</h1>
                 <div className='flex flex-col gap-8'>
                     {/*
