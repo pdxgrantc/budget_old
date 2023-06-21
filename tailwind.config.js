@@ -47,6 +47,7 @@ module.exports = {
       xsmall: ['1.1rem'],
       small: ['1.5rem'],
       normal: ['1.75rem'],
+      large: ['2rem'],
       small_header: ['2.25rem'],
       header: ['2.75rem'],
       lheader: ['3.25rem'],
