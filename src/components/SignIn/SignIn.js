@@ -3,8 +3,9 @@ import React, { useState } from 'react'
 // Firebase
 import { signInWithGoogle, signInWithEmailPassword } from '../../firebase'
 
-// Components
-import { FcGoogle as GoogleIcon } from 'react-icons/fc'
+// Images
+import google_normal from './btn_google_signin_dark_normal_web@2x.png'
+import google_pressed from './btn_google_signin_dark_pressed_web@2x.png'
 
 export default function SignIn() {
     const [email, setEmail] = useState('')
@@ -13,6 +14,30 @@ export default function SignIn() {
     const usernamePasswordSignIn = () => {
         signInWithEmailPassword(email, password)
     }
+
+    const GoogleButton = () => {
+        const handleMouseEnter = (event) => {
+            // Change the source of the image to the second image
+            event.target.src = google_pressed;
+        };
+
+        const handleMouseLeave = (event) => {
+            // Change the source of the image back to the first image
+            event.target.src = google_normal;
+        };
+
+        return (
+            <button className='mx-auto transition rounded' onClick={signInWithGoogle}>
+                <img
+                    src={google_normal}
+                    alt="Button"
+                    className='h-[5rem]'
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                />
+            </button>
+        );
+    };
 
     return (
         <div className='h-full w-full'>
@@ -26,13 +51,8 @@ export default function SignIn() {
                         </div>
                         <button className='w-full py-2 px-3 rounded bg-button_grey text-text hover:bg-button_grey_hover transition' onClick={usernamePasswordSignIn}>Sign In</button>
                     </div>
-                    <div className='font-semibold'>
-                        <button className='mx-auto text-white hover:text-text transition flex gap-6 bg-google_blue py-[.75rem] px-[1.25rem] hover:bg-button_grey_hover rounded' onClick={signInWithGoogle}>
-                            <div className='my-auto p-1 bg-white rounded-full'>
-                                <GoogleIcon className='w-[2rem] h-auto' />
-                            </div>
-                            <h2 className='text-normalfont-roboto-regular text-normal'>Sign In With Google</h2>
-                        </button>
+                    <div className='font-semibold mx-auto'>
+                        <GoogleButton />
                     </div>
                 </div>
             </div>
