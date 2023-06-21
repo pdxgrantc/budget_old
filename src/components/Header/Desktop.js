@@ -19,7 +19,9 @@ export default function Desktop() {
                 <h1 className='align-middle text-lheader font-bold text-white'>EZ Budget</h1>
                 {user ?
                     <div className='flex'>
-                        <DropdownMenu />
+                        <Link to='/dashboard' className='my-auto'>
+                            <p className='text-xsmall text-white'>Dashboard</p>
+                        </Link>
                         <AccountMenu />
                     </div>
                     :
@@ -106,7 +108,7 @@ function DropdownMenu() {
             </button>
             {isOpen && (
                 <ul className='flex flex-col absolute z-10 rounded-md bg-menu_button' style={{ top: "100%", right: 0 }} onMouseLeave={handleMouseLeave} >
-                    <AccountMenuItem text="Account Settings" link="/account" />
+                    <AccountMenuItem text="Accounts" link="/account" />
                     <button className='hover:bg-gray-600 rounded px-3 py-2 flex gap-3' onClick={signOutUser}>
                         <p className='text-xsmall'>Sign Out</p>
                         <LogoutIcon className='my-auto' />
