@@ -10,7 +10,6 @@ import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 
 export default function Home() {
-<<<<<<< HEAD
   const [user] = useAuthState(auth)
 
   if (!user) {
