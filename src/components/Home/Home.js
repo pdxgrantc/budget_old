@@ -1,15 +1,32 @@
 import React from 'react'
 
+// Firebase
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { auth } from '../../firebase'
+
 // Components
+import SignIn from '../SignIn/SignIn'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 
 export default function Home() {
-  return (
-    <div className='w-screen min-h-screen text-base bg-bg text-text'>
-      <Header />
-      <div>Home</div>
-      <Footer />
-    </div>
-  )
+  const [user] = useAuthState(auth)
+
+  if (!user) {
+    return (
+      <div className='w-screen min-h-screen text-base bg-bg text-text'>
+        <Header />
+        <SignIn />
+        <Footer />
+      </div>
+    )
+  } else {
+    return (
+      <div className='w-screen min-h-screen text-base bg-bg text-text'>
+        <Header />
+        Home
+        <Footer />
+      </div>
+    )
+  }
 }
