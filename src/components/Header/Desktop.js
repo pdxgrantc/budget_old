@@ -47,7 +47,7 @@ function AccountMenu() {
         return (
             <li className='hover:bg-gray-600 rounded px-3 py-2'>
                 <Link to={props.link} className="">
-                    <p className='whitespace-nowrap'>{props.text}</p>
+                    <p className='whitespace-nowrap text-xsmall'>{props.text}</p>
                 </Link>
             </li>
         );
@@ -65,7 +65,7 @@ function AccountMenu() {
                 <ul className='flex flex-col absolute z-10 rounded-md bg-menu_button' style={{ top: "100%", right: 0 }} onMouseLeave={handleMouseLeave} >
                     <AccountMenuItem text="Account Settings" link="/account" />
                     <button className='hover:bg-gray-600 rounded px-3 py-2 flex gap-3' onClick={signOutUser}>
-                        <p>Sign Out</p>
+                        <p className='text-xsmall'>Sign Out</p>
                         <LogoutIcon className='my-auto' />
                     </button>
                 </ul>

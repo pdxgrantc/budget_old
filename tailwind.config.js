@@ -37,9 +37,10 @@ module.exports = {
       menu_button_hover: '#5e5e5e',
     },
     fontSize: {
-      xsmall: ['1.1rem'],
+      xsmall: ['1.25rem'],
       small: ['1.5rem'],
       normal: ['1.75rem'],
+      DEFAULT: ['1.75rem'],
       large: ['2rem'],
       small_header: ['2.25rem'],
       header: ['2.75rem'],
