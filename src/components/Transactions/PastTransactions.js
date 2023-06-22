@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 // Firebase
-import { onSnapshot, collection, query, orderBy, doc, deleteDoc, limit } from 'firebase/firestore';
+import { onSnapshot, collection, query, orderBy, doc, deleteDoc, limit, getDoc, where } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth, db } from '../../firebase'
 
@@ -14,12 +14,14 @@ export default function PastTransactions() {
     const [numTransactionsDisplayed, setNumTransactionsDisplayed] = useState(50);
     const [totalTransactions, setTotalTransactions] = useState(0);
     const [sortToggle, setSortToggle] = useState('desc');
+    const [transactionCategory, setTransactionCategory] = useState('');
 
     useEffect(() => {
         const unsubscribe = onSnapshot(
             query(
                 collection(db, 'users', user.uid, 'transactions'),
                 orderBy('transactionDate', sortToggle),
+                where('category', '==', transactionCategory),
                 limit(numTransactionsDisplayed)
             ),
             (snapshot) => {
@@ -29,7 +31,7 @@ export default function PastTransactions() {
         return () => {
             unsubscribe();
         };
-    }, [user, numTransactionsDisplayed, sortToggle]);
+    }, [user, numTransactionsDisplayed, sortToggle, transactionCategory]);
 
     useEffect(() => {
         const unsubscribe = onSnapshot(query(collection(db, 'users', user.uid, 'transactions')), (snapshot) => {
@@ -49,51 +51,97 @@ export default function PastTransactions() {
         setNumTransactionsDisplayed(numTransactionsDisplayed + 50);
     };
 
+    const [userDoc, setUserDoc] = useState(null);
+
+    useEffect(() => {
+        const getUserDoc = async () => {
+            const docRef = doc(db, 'users', user.uid);
+            const docSnap = await getDoc(docRef);
+
+            if (docSnap.exists()) {
+                setUserDoc(docSnap.data());
+            } else {
+                console.log('No such document!');
+            }
+        };
+
+        if (user) {
+            getUserDoc();
+        }
+    }, [user, user.uid]);
+
     if (user) {
         return (
-            <div>
-                <div>
-                    <h2 className="text-sheader font-semibold">Transactions:</h2>
-                    <div className='flex'>
-                        <h3>Sort by:</h3>
-                        <button onClick={() => setSortToggle('desc')}>Newest</button>
-                        <button onClick={() => setSortToggle('asc')}>Oldest</button>
-                    </div>
-                </div>
-                <div>
+            <>
+                {userDoc && userDoc.transactionTypes !== null ? (
                     <div>
-                        {transactions.length === 0 ? (
-                            <div>You haven't added any transactions yet</div>
-                        ) : (
-                            <>
-                                {transactions.map((transaction, index) => (
-                                    <div key={transaction.id} className="flex gap-4">
-                                        <p>{index + 1}.</p>
-                                        <p>{transaction.name}</p>
-                                        <p>${parseFloat(transaction.amount).toFixed(2)}</p>
-                                        {transaction.business === '' ? <></> : <p>{transaction.business}</p>}
-                                        <p>{transaction.category}</p>
-                                        <p>{transaction.transactionDate.toDate().toLocaleDateString('en-US')}</p>
-                                        <button onClick={() => handleDeleteTransaction(transaction.id)}>
-                                            <TrashIcon />
-                                        </button>
-                                    </div>
-                                ))}
-                            </>
-                        )}
+                        <div>
+                            <h2 className="text-sheader font-semibold">Transactions:</h2>
+                            <div className='flex gap-3'>
+                                <h3 className='font-semibold'>Sort by:</h3>
+                                <button
+                                    onClick={() => setSortToggle('desc')}
+                                    className='h-fit on_mobile:hidden hover:bg-menu_button_hover hover:px-5 py-[.1rem] w-fit rounded-button transition-all duration-300 ease-cubic-bezier'>
+                                    Newest
+                                </button>
+                                <button
+                                    onClick={() => setSortToggle('asc')}
+                                    className='h-fit on_mobile:hidden hover:bg-menu_button_hover hover:px-5 py-[.1rem] w-fit rounded-button transition-all duration-300 ease-cubic-bezier'>
+                                    Oldest
+                                </button>
+                                <select
+                                    id="transactionCategory"
+                                    name="transactionCategory"
+                                    value={transactionCategory}
+                                    onChange={(e) => setTransactionCategory(e.target.value)}
+                                    className='outline-none rounded-md text-black px-2 py-[0.125rem] font-normal text-xsmall h-fit'>
+                                    <option value="">Select a Category</option>
+                                    {userDoc.transactionTypes.map((transactionType, index) => (
+                                        <option key={index} value={transactionType}>
+                                            {transactionType}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                        </div>
+                        <div>
+                            <div>
+                                {transactions.length === 0 ? (
+                                    <div>You haven't added any transactions yet</div>
+                                ) : (
+                                    <>
+                                        {transactions.map((transaction, index) => (
+                                            <div key={transaction.id} className="flex gap-4">
+                                                <p>{index + 1}.</p>
+                                                <p>{transaction.name}</p>
+                                                <p>${parseFloat(transaction.amount).toFixed(2)}</p>
+                                                {transaction.business === '' ? <></> : <p>{transaction.business}</p>}
+                                                <p>{transaction.category}</p>
+                                                <p>{transaction.transactionDate.toDate().toLocaleDateString('en-US')}</p>
+                                                <button onClick={() => handleDeleteTransaction(transaction.id)}>
+                                                    <TrashIcon />
+                                                </button>
+                                            </div>
+                                        ))}
+                                    </>
+                                )}
+                            </div>
+                            {numTransactionsDisplayed < totalTransactions ? (
+                                <button
+                                    onClick={handleLoadMoreTransactions}
+                                    className="hover:bg-menu_button_hover hover:px-5 py-1 rounded-button font-semibold transition-all duration-300 ease-cubic-bezier"
+                                >
+                                    Load More
+                                </button>
+                            ) : (
+                                <div></div>
+                            )}
+                        </div>
                     </div>
-                    {numTransactionsDisplayed < totalTransactions ? (
-                        <button
-                            onClick={handleLoadMoreTransactions}
-                            className="hover:bg-menu_button_hover hover:px-5 py-1 rounded-button font-semibold transition-all duration-300 ease-cubic-bezier"
-                        >
-                            Load More
-                        </button>
-                    ) : (
-                        <div></div>
-                    )}
-                </div>
-            </div>
+                ) : (
+                    <></>
+                )}
+            </>
         );
     }
 }

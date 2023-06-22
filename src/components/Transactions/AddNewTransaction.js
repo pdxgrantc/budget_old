@@ -38,7 +38,7 @@ export default function AddNewTransaction() {
         if (user) {
             getUserDoc();
         }
-    }, [user]);
+    }, [user, user.uid]);
 
     // add transaction to collection within user document called transactions
     const addTransaction = async (e) => {
