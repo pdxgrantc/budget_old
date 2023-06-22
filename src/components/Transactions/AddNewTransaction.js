@@ -82,7 +82,7 @@ export default function AddNewTransaction() {
                 Add a New Transaction
             </h2>
             {userDoc && userDoc.transactionTypes !== null ? (
-                <form>
+                <form className='flex flex-col gap'>
                     <div className='grid on_desktop:grid-cols-2 w-fit gap-y-4 gap-x-5 font-semibold'>
                         <div className='flex gap-3 flex-nowrap'>
                             <label htmlFor="transactionName">Name:</label>
@@ -149,11 +149,11 @@ export default function AddNewTransaction() {
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <button type="submit" onClick={addTransaction}>
+                    <div className='flex gap'>
+                        <button type="submit" onClick={addTransaction} className='hover:bg-menu_button_hover hover:px-5 py-1 rounded-button font-semibold transition-all duration-300 ease-cubic-bezier'>
                             Add Transaction
                         </button>
-                        <button type="reset" onClick={ClearForm} >
+                        <button type="reset" onClick={ClearForm} className='hover:bg-menu_button_hover hover:px-5 py-1 rounded-button font-semibold transition-all duration-300 ease-cubic-bezier'>
                             Clear Form
                         </button>
                     </div>
