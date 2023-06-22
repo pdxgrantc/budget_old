@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 import { getDoc, doc, setDoc } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth, db } from '../../firebase'
+import { Link } from 'react-router-dom';
 
 export default function AddNewTransaction() {
     const [transactionName, setTransactionName] = useState('');
@@ -49,13 +50,22 @@ export default function AddNewTransaction() {
             return;
         }
 
+        // store the date in format mm/dd/yyyy
+        var dateCache = selectedDate.split('-');
+        var month = dateCache[1];
+        var day = dateCache[2];
+        var year = dateCache[0];
+        var dateForStorage = month + '/' + day + '/' + year;
+        var dateTimestamp = new Date(year, month - 1, day);
+
         const transaction = {
             name: transactionName,
             business: transactionBusinessName,
             amount: transactionAmount,
             category: transactionCategory,
-            transactionDate: selectedDate,
-            dateCreated: currentDate
+            transactionDate: dateForStorage,
+            dateCreated: currentDate,
+            dateCreatedTimestamp: dateTimestamp,
         };
 
         const docRef = doc(db, 'users', user.uid, 'transactions', currentDate.toISOString());
@@ -63,6 +73,7 @@ export default function AddNewTransaction() {
 
         // clear form
         setTransactionName('');
+        setTransactonBusinessName('');
         setTransactionAmount('');
         setTransactionCategory('');
         setSelectedDate('');
@@ -70,6 +81,7 @@ export default function AddNewTransaction() {
 
     const ClearForm = () => {
         setTransactionName('');
+        setTransactonBusinessName('');
         setTransactionAmount('');
         setTransactionCategory('');
         setSelectedDate('');
@@ -77,7 +89,7 @@ export default function AddNewTransaction() {
 
 
     return (
-        <div>
+        <div className='flex flex-col gap-3'>
             <h2 className='text-sheader font-semibold'>
                 Add a New Transaction
             </h2>
@@ -136,6 +148,13 @@ export default function AddNewTransaction() {
                                 ))}
                             </select>
                         </div>
+                        <Link
+                            to='/account-settings'
+                            className='on_desktop:hidden hover:bg-menu_button_hover hover:px-5 py-[.1rem] w-fit rounded-button font-semibold transition-all duration-300 ease-cubic-bezier'>
+                            <button >
+                                Add New Category
+                            </button>
+                        </Link>
                         <div>
                             <div className='flex flex-nowrap gap-3'>
                                 <label htmlFor="date">Select Date:</label>
@@ -148,6 +167,13 @@ export default function AddNewTransaction() {
                                 />
                             </div>
                         </div>
+                        <Link
+                            to='/account-settings'
+                            className='on_mobile:hidden hover:bg-menu_button_hover hover:px-5 py-[.1rem] w-fit rounded-button font-semibold transition-all duration-300 ease-cubic-bezier'>
+                            <button >
+                                Add New Category
+                            </button>
+                        </Link>
                     </div>
                     <div className='flex gap'>
                         <button type="submit" onClick={addTransaction} className='hover:bg-menu_button_hover hover:px-5 py-1 rounded-button font-semibold transition-all duration-300 ease-cubic-bezier'>

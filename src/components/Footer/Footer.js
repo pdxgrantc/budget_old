@@ -5,9 +5,11 @@ export default function Footer() {
     const year = new Date().getFullYear();
 
     return (
-        <div className='h-[50px] flex items-center justify-center'>
+        <div>
             <div className='h-[2rem]'></div>
-            <h3 className='text-center text-small'>Grant Conklin | {year}</h3>
+            <div className='h-[50px] flex items-center justify-center'>
+                <h3 className='text-center text-small'>Grant Conklin | {year}</h3>
+            </div>
         </div>
     )
 }

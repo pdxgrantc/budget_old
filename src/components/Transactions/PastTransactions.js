@@ -9,19 +9,27 @@ import { auth, db } from '../../firebase'
 import { FaRegTrashAlt as TrashIcon } from 'react-icons/fa'
 
 export default function PastTransactions() {
-    const [user] = useAuthState(auth)
+    const [user] = useAuthState(auth);
     const [transactions, setTransactions] = useState([]);
     const [numTransactionsDisplayed, setNumTransactionsDisplayed] = useState(50);
     const [totalTransactions, setTotalTransactions] = useState(0);
+    const [sortToggle, setSortToggle] = useState('desc');
 
     useEffect(() => {
-        const unsubscribe = onSnapshot(query(collection(db, 'users', user.uid, 'transactions'), limit(numTransactionsDisplayed)), (snapshot) => {
-            setTransactions(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-        });
+        const unsubscribe = onSnapshot(
+            query(
+                collection(db, 'users', user.uid, 'transactions'),
+                orderBy('transactionDate', sortToggle),
+                limit(numTransactionsDisplayed)
+            ),
+            (snapshot) => {
+                setTransactions(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+            }
+        );
         return () => {
             unsubscribe();
         };
-    }, [user, numTransactionsDisplayed]);
+    }, [user, numTransactionsDisplayed, sortToggle]);
 
     useEffect(() => {
         const unsubscribe = onSnapshot(query(collection(db, 'users', user.uid, 'transactions')), (snapshot) => {
@@ -41,26 +49,29 @@ export default function PastTransactions() {
         setNumTransactionsDisplayed(numTransactionsDisplayed + 50);
     };
 
-
     if (user) {
         return (
             <div>
                 <div>
-                    <h2 className='text-sheader font-semibold'>
-                        Transactions:
-                    </h2>
+                    <h2 className="text-sheader font-semibold">Transactions:</h2>
+                    <div className='flex'>
+                        <h3>Sort by:</h3>
+                        <button onClick={() => setSortToggle('desc')}>Newest</button>
+                        <button onClick={() => setSortToggle('asc')}>Oldest</button>
+                    </div>
                 </div>
                 <div>
                     <div>
-                        {transactions.length === 0 ? <div>You haven't added any transactions yet</div>
-                            :
+                        {transactions.length === 0 ? (
+                            <div>You haven't added any transactions yet</div>
+                        ) : (
                             <>
                                 {transactions.map((transaction, index) => (
-                                    <div key={transaction.id} className='flex gap-4'>
-                                        <p>{index}.</p>
+                                    <div key={transaction.id} className="flex gap-4">
+                                        <p>{index + 1}.</p>
                                         <p>{transaction.name}</p>
                                         <p>{transaction.amount}</p>
-                                        <p>{transaction.business}</p>
+                                        {transaction.business === '' ? <></> : <p>{transaction.business}</p>}
                                         <p>{transaction.category}</p>
                                         <p>{transaction.transactionDate}</p>
                                         <button onClick={() => handleDeleteTransaction(transaction.id)}>
@@ -69,15 +80,20 @@ export default function PastTransactions() {
                                     </div>
                                 ))}
                             </>
-                        }
+                        )}
                     </div>
-                    {numTransactionsDisplayed < totalTransactions ?
-                        <button onClick={handleLoadMoreTransactions} className='hover:bg-menu_button_hover hover:px-5 py-1 rounded-button font-semibold transition-all duration-300 ease-cubic-bezier'>Load More</button>
-                        :
+                    {numTransactionsDisplayed < totalTransactions ? (
+                        <button
+                            onClick={handleLoadMoreTransactions}
+                            className="hover:bg-menu_button_hover hover:px-5 py-1 rounded-button font-semibold transition-all duration-300 ease-cubic-bezier"
+                        >
+                            Load More
+                        </button>
+                    ) : (
                         <div></div>
-                    }
+                    )}
                 </div>
             </div>
-        )
+        );
     }
 }
