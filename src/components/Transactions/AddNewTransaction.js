@@ -55,7 +55,6 @@ export default function AddNewTransaction() {
         var month = dateCache[1];
         var day = dateCache[2];
         var year = dateCache[0];
-        var dateForStorage = month + '/' + day + '/' + year;
         var dateTimestamp = new Date(year, month - 1, day);
 
         const transaction = {
@@ -63,9 +62,8 @@ export default function AddNewTransaction() {
             business: transactionBusinessName,
             amount: transactionAmount,
             category: transactionCategory,
-            transactionDate: dateForStorage,
             dateCreated: currentDate,
-            dateCreatedTimestamp: dateTimestamp,
+            transactionDate: dateTimestamp,
         };
 
         const docRef = doc(db, 'users', user.uid, 'transactions', currentDate.toISOString());

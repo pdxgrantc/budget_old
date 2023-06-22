@@ -46,7 +46,7 @@ module.exports = {
           1000: "#0d131e",
         },
         base: '#062f4f',
-        bg: '#140f1f',
+        bg: '#181321',
         secondary: '#b82601',
         accent: '#813772',
         dark_grey: '#141414',

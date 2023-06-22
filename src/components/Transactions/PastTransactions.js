@@ -70,10 +70,10 @@ export default function PastTransactions() {
                                     <div key={transaction.id} className="flex gap-4">
                                         <p>{index + 1}.</p>
                                         <p>{transaction.name}</p>
-                                        <p>{transaction.amount}</p>
+                                        <p>${parseFloat(transaction.amount).toFixed(2)}</p>
                                         {transaction.business === '' ? <></> : <p>{transaction.business}</p>}
                                         <p>{transaction.category}</p>
-                                        <p>{transaction.transactionDate}</p>
+                                        <p>{transaction.transactionDate.toDate().toLocaleDateString('en-US')}</p>
                                         <button onClick={() => handleDeleteTransaction(transaction.id)}>
                                             <TrashIcon />
                                         </button>
