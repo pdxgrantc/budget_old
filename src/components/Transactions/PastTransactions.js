@@ -72,7 +72,7 @@ export default function PastTransactions() {
                         }
                     </div>
                     {numTransactionsDisplayed < totalTransactions ?
-                        <button onClick={handleLoadMoreTransactions}>Load More</button>
+                        <button onClick={handleLoadMoreTransactions} className='hover:bg-menu_button_hover hover:px-5 py-1 rounded-button font-semibold transition-all duration-300 ease-cubic-bezier'>Load More</button>
                         :
                         <div></div>
                     }
