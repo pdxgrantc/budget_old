@@ -79,7 +79,7 @@ export default function AddNewTransaction() {
     return (
         <div>
             <h2 className='text-sheader font-semibold'>
-                Add New Transaction
+                Add a New Transaction
             </h2>
             {userDoc && userDoc.transactionTypes !== null ? (
                 <form>

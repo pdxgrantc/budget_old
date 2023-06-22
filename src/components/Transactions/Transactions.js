@@ -29,10 +29,12 @@ export default function Transactions() {
                 <div className="mx-[5rem] rounded bg-black py-[2rem] px-[4rem]">
                     <div className='flex flex-col'>
                         <div className='items-baseline h-fit'>
-                            <h1 className='text-header font-semibold'>{user.displayName}'s Transactions</h1>
+                            <h1 className='text-lheader font-semibold'>Your Transactions</h1>
                         </div>
-                        <AddNewTransaction />
-                        <PastTransactions />
+                        <div className='flex flex-col gap-2'>
+                            <AddNewTransaction />
+                            <PastTransactions />
+                        </div>
                     </div>
                 </div>
                 <Footer />
