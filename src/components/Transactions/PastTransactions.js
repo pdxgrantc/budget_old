@@ -15,23 +15,31 @@ export default function PastTransactions() {
     const [totalTransactions, setTotalTransactions] = useState(0);
     const [sortToggle, setSortToggle] = useState('desc');
     const [transactionCategory, setTransactionCategory] = useState('');
+    const [validCategory, setValidCategory] = useState(true); // Track if the selected category has valid documents
 
     useEffect(() => {
         const unsubscribe = onSnapshot(
             query(
                 collection(db, 'users', user.uid, 'transactions'),
                 orderBy('transactionDate', sortToggle),
-                where('category', '==', transactionCategory),
+                ...(transactionCategory ? [where('category', '==', transactionCategory)] : []),
                 limit(numTransactionsDisplayed)
             ),
             (snapshot) => {
-                setTransactions(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+                if (snapshot.empty) {
+                    setTransactions([]);
+                    setValidCategory(false); // Set validCategory to false if no valid documents found
+                } else {
+                    setTransactions(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+                    setValidCategory(true); // Set validCategory to true if valid documents found
+                }
             }
         );
         return () => {
             unsubscribe();
         };
     }, [user, numTransactionsDisplayed, sortToggle, transactionCategory]);
+
 
     useEffect(() => {
         const unsubscribe = onSnapshot(query(collection(db, 'users', user.uid, 'transactions')), (snapshot) => {
@@ -107,7 +115,11 @@ export default function PastTransactions() {
                         <div>
                             <div>
                                 {transactions.length === 0 ? (
-                                    <div>You haven't added any transactions yet</div>
+                                    validCategory ? (
+                                        <div>You haven't added any transactions yet</div>
+                                    ) : (
+                                        <div>No transactions found for the selected category</div>
+                                    )
                                 ) : (
                                     <>
                                         {transactions.map((transaction, index) => (
