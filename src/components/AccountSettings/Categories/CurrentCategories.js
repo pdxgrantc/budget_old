@@ -42,7 +42,7 @@ export default function CurrentCategories() {
         if (!confirmDelete) {
             return;
         }
-        
+
 
         // remove category from user's transactionTypes array
         await runTransaction(db, async (transaction) => {
@@ -63,7 +63,9 @@ export default function CurrentCategories() {
                             <div key={category} className='flex gap-3 flex-nowrap'>
                                 <p>{index + 1}.</p>
                                 <p>{category}</p>
-                                <button onClick={() => handleDeleteCategory(category)}><TrashIcon /></button>
+                                <button onClick={() => handleDeleteCategory(category)} className=" ">
+                                    <TrashIcon className='p-1 rounded-full h-[80%] w-full hover:text-black hover:bg-gray-200' />
+                                </button>
                             </div>
                         ))}
                     </>
