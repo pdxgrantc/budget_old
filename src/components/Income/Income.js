@@ -23,7 +23,7 @@ export default function Income() {
   } else {
     return (
       <div className='w-screen min-h-screen text-small bg-bg text'>
-        <Header />
+        <Header title={"Income"}/>
         Home
         <Footer />
       </div>
