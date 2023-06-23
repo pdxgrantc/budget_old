@@ -30,8 +30,8 @@ export default function CurrentCategories() {
 
     return (
         <div>
-            <h2 className="text-header font-semibold">Current Categories</h2>
-            <div>
+            <h2 className="text-sheader font-semibold">Current Categories</h2>
+            <div className='ml-3'>
                 {userCategories !== null ? (
                     <>
                         {userCategories.map((category, index) => (
