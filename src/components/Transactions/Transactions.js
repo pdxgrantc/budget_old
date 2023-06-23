@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from 'react-helmet'
 
 // Firebase
 import { useAuthState } from 'react-firebase-hooks/auth'
@@ -25,7 +26,10 @@ export default function Transactions() {
     } else {
         return (
             <div className='w-screen min-h-screen text-small bg-bg text'>
-                <Header title={"Your Transactions"}/>
+                <Helmet>
+                    <title>Transactions</title>
+                </Helmet>
+                <Header title={"Your Transactions"} />
                 <div className="mx-[5rem]">
                     <div className='flex flex-col'>
                         <div className='flex flex-col gap-[2rem]'>
