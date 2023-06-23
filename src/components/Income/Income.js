@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from 'react-helmet'
 
 // Firebase
 import { useAuthState } from 'react-firebase-hooks/auth'
@@ -23,6 +24,9 @@ export default function Income() {
   } else {
     return (
       <div className='w-screen min-h-screen text-small bg-bg text'>
+        <Helmet>
+          <title>Income</title>
+        </Helmet>
         <Header title={"Income"} />
         Home
         <Footer />
