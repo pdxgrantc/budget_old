@@ -124,29 +124,31 @@ export default function AddNewIncome() {
                                 className='outline-none rounded-md text-black px-2 py-[0.125rem] font-normal text-xsmall h-fit'
                             />
                         </div>
-                        <div className='flex gap-3 flex-nowrap'>
-                            <label htmlFor='incomeCategory'>Category:</label>
-                            <select
-                                id='incomeCategory'
-                                name='incomeCategory'
-                                value={IncomeCategory}
-                                onChange={(e) => setIncomeCategory(e.target.value)}
-                                className='outline-none rounded-md text-black px-2 py-[0.125rem] font-normal text-xsmall h-fit'>
-                                <option value=''>Select a Category</option>
-                                {userDoc.incomeSources.map((source) => (
-                                    <option key={source} value={source}>
-                                        {source}
-                                    </option>
-                                ))}
-                            </select>
+                        <div>
+                            <div className='flex gap-3 flex-nowrap'>
+                                <label htmlFor='incomeCategory'>Category:</label>
+                                <select
+                                    id='incomeCategory'
+                                    name='incomeCategory'
+                                    value={IncomeCategory}
+                                    onChange={(e) => setIncomeCategory(e.target.value)}
+                                    className='outline-none rounded-md text-black px-2 py-[0.125rem] font-normal text-xsmall h-fit'>
+                                    <option value=''>Select a Category</option>
+                                    {userDoc.incomeSources.map((source) => (
+                                        <option key={source} value={source}>
+                                            {source}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                            <Link
+                                to='/account-settings'
+                                className='text-xxsmall border-b-[1px] font-[400] hover:bg-menu_button_hover hover:px-3 py-[2px] w-fit transition-all duration-300 ease-cubic-bezier'>
+                                <button >
+                                    Add New Category
+                                </button>
+                            </Link>
                         </div>
-                        <Link
-                            to='/account-settings'
-                            className='border-b-[2px] on_desktop:hidden hover:bg-menu_button_hover hover:px-5 py-[.1rem] w-fit font-semibold transition-all duration-300 ease-cubic-bezier'>
-                            <button >
-                                Add New Category
-                            </button>
-                        </Link>
                         <div className='flex gap-3 flex-nowrap'>
                             <label htmlFor='incomeDate'>Date:</label>
                             <input
@@ -158,13 +160,6 @@ export default function AddNewIncome() {
                                 className='rounded-md outline-none text-black px-2 py-[0.125rem] font-normal text-xsmall h-fit'
                             />
                         </div>
-                        <Link
-                            to='/account-settings'
-                            className='border-b-[2px] on_mobile:hidden hover:bg-menu_button_hover hover:px-5 py-[.1rem] w-fit font-semibold transition-all duration-300 ease-cubic-bezier'>
-                            <button >
-                                Add New Category
-                            </button>
-                        </Link>
                     </div>
                     <div className='flex gap-3'>
                         <button type="submit" onClick={addIncome} className='border-b-[2px] hover:bg-menu_button_hover hover:px-5 py-1 hover:rounded-button font-semibold transition-all duration-300 ease-cubic-bezier'>
