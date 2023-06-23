@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 // Firebase
-import { getDoc, doc, setDoc } from 'firebase/firestore';
+import { onSnapshot, doc, setDoc } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth, db } from '../../firebase'
 import { Link } from 'react-router-dom';
@@ -24,20 +24,28 @@ export default function AddNewTransaction() {
     const [user] = useAuthState(auth)
 
     useEffect(() => {
+        let unsubscribe;
+
         const getUserDoc = async () => {
             const docRef = doc(db, 'users', user.uid);
-            const docSnap = await getDoc(docRef);
-
-            if (docSnap.exists()) {
-                setUserDoc(docSnap.data());
-            } else {
-                console.log('No such document!');
-            }
+            unsubscribe = onSnapshot(docRef, (docSnap) => {
+                if (docSnap.exists()) {
+                    setUserDoc(docSnap.data());
+                } else {
+                    console.log('No such document!');
+                }
+            });
         };
 
         if (user) {
             getUserDoc();
         }
+
+        return () => {
+            if (unsubscribe) {
+                unsubscribe();
+            }
+        };
     }, [user, user.uid]);
 
     // add transaction to collection within user document called transactions
@@ -188,5 +196,3 @@ export default function AddNewTransaction() {
         </div>
     )
 }
-
-
