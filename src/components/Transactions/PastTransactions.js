@@ -52,7 +52,10 @@ export default function PastTransactions() {
 
     const handleDeleteTransaction = async (id) => {
         const transactionRef = doc(db, 'users', user.uid, 'transactions', id);
-        await deleteDoc(transactionRef);
+        // Confirm deletion with user
+        if (window.confirm('Are you sure you want to delete this transaction?')) {
+            await deleteDoc(transactionRef);
+        }
     };
 
     const handleLoadMoreTransactions = () => {
