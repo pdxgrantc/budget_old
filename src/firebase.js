@@ -33,7 +33,7 @@ export const signInWithGoogle = async () => {
                 email: result.user.email,
                 photoURL: result.user.photoURL,
                 uid: result.user.uid,
-                transactionTypes: ['Groceries', 'Resturaunts', 'Household Supplies', 'Rent', 'Utilities', 'Repairs and Maintenance', 'Entertainment', 'Other'],
+                transactionTypes: ['Groceries', 'Resturaunts', 'Household Supplies', 'Rent', 'Utilities', 'Repairs and Maintenance', 'Entertainment'],
                 createdAt: new Date(),
             });
         }
