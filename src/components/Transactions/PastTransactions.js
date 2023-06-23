@@ -85,7 +85,7 @@ export default function PastTransactions() {
         return (
             <>
                 {userDoc && userDoc.transactionTypes !== null ? (
-                    <div>
+                    <div className='flex flex-col gap-4'>
                         <div>
                             <h2 className="text-header font-semibold">Transactions:</h2>
                             <div className='flex flex-col'>
