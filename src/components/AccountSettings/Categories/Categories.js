@@ -6,13 +6,11 @@ import AddNewCategory from './AddNewCategory'
 
 export default function Categories() {
     return (
-        <div className="grid grid-cols-2 gap-4">
-            <div className="col-span-1">
+        <div className="flex gap-5 min-w-fit">
+            <div className='w-[30%] min-w-fit'>
                 <CurrentCategories />
             </div>
-            <div className="col-span-1">
-                <AddNewCategory />
-            </div>
+            <AddNewCategory />
         </div>
     )
 }
