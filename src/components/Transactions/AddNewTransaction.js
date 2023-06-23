@@ -88,7 +88,7 @@ export default function AddNewTransaction() {
 
     return (
         <div className='flex flex-col gap-3'>
-            <h2 className='text-sheader font-semibold'>
+            <h2 className='text-header font-semibold'>
                 Add a New Transaction
             </h2>
             {userDoc && userDoc.transactionTypes !== null ? (
@@ -148,7 +148,7 @@ export default function AddNewTransaction() {
                         </div>
                         <Link
                             to='/account-settings'
-                            className='on_desktop:hidden hover:bg-menu_button_hover hover:px-5 py-[.1rem] w-fit rounded-button font-semibold transition-all duration-300 ease-cubic-bezier'>
+                            className='border-b-[2px] on_desktop:hidden hover:bg-menu_button_hover hover:px-5 py-[.1rem] w-fit font-semibold transition-all duration-300 ease-cubic-bezier'>
                             <button >
                                 Add New Category
                             </button>
@@ -167,17 +167,17 @@ export default function AddNewTransaction() {
                         </div>
                         <Link
                             to='/account-settings'
-                            className='on_mobile:hidden hover:bg-menu_button_hover hover:px-5 py-[.1rem] w-fit rounded-button font-semibold transition-all duration-300 ease-cubic-bezier'>
+                            className='border-b-[2px] on_mobile:hidden hover:bg-menu_button_hover hover:px-5 py-[.1rem] w-fit hover:rounded-button font-semibold transition-all duration-300 ease-cubic-bezier'>
                             <button >
                                 Add New Category
                             </button>
                         </Link>
                     </div>
                     <div className='flex gap'>
-                        <button type="submit" onClick={addTransaction} className='hover:bg-menu_button_hover hover:px-5 py-1 rounded-button font-semibold transition-all duration-300 ease-cubic-bezier'>
+                        <button type="submit" onClick={addTransaction} className='border-b-[2px] hover:bg-menu_button_hover hover:px-5 py-1 hover:rounded-button font-semibold transition-all duration-300 ease-cubic-bezier'>
                             Add Transaction
                         </button>
-                        <button type="reset" onClick={ClearForm} className='hover:bg-menu_button_hover hover:px-5 py-1 rounded-button font-semibold transition-all duration-300 ease-cubic-bezier'>
+                        <button type="reset" onClick={ClearForm} className='border-b-[2px] hover:bg-menu_button_hover hover:px-5 py-1 hover:rounded-button font-semibold transition-all duration-300 ease-cubic-bezier'>
                             Clear Form
                         </button>
                     </div>

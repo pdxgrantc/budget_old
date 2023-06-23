@@ -87,32 +87,42 @@ export default function PastTransactions() {
                 {userDoc && userDoc.transactionTypes !== null ? (
                     <div>
                         <div>
-                            <h2 className="text-sheader font-semibold">Transactions:</h2>
-                            <div className='flex gap-3'>
-                                <h3 className='font-semibold'>Sort by:</h3>
-                                <button
-                                    onClick={() => setSortToggle('desc')}
-                                    className='h-fit on_mobile:hidden hover:bg-menu_button_hover hover:px-5 py-[.1rem] w-fit rounded-button transition-all duration-300 ease-cubic-bezier'>
-                                    Newest
-                                </button>
-                                <button
-                                    onClick={() => setSortToggle('asc')}
-                                    className='h-fit on_mobile:hidden hover:bg-menu_button_hover hover:px-5 py-[.1rem] w-fit rounded-button transition-all duration-300 ease-cubic-bezier'>
-                                    Oldest
-                                </button>
-                                <select
-                                    id="transactionCategory"
-                                    name="transactionCategory"
-                                    value={transactionCategory}
-                                    onChange={(e) => setTransactionCategory(e.target.value)}
-                                    className='outline-none rounded-md text-black px-2 py-[0.125rem] font-normal text-xsmall h-fit'>
-                                    <option value="">All Categories</option>
-                                    {userDoc.transactionTypes.map((transactionType, index) => (
-                                        <option key={index} value={transactionType}>
-                                            {transactionType}
-                                        </option>
-                                    ))}
-                                </select>
+                            <h2 className="text-header font-semibold">Transactions:</h2>
+                            <div className='flex flex-col'>
+                                <h3 className='font-semibold text-large'>Sort by:</h3>
+                                <div className='flex gap-6'>
+                                    <div className='flex gap-3'>
+                                        <h4 className='font-semibold text-small'>Date:</h4>
+                                        <div className='flex gap-3'>
+                                            <button
+                                                onClick={() => setSortToggle('desc')}
+                                                className='h-fit on_mobile:hidden border-b-[2px] hover:bg-menu_button_hover hover:px-5 py-[.1rem] w-fit hover:rounded-button transition-all duration-300 ease-cubic-bezier'>
+                                                Newest
+                                            </button>
+                                            <button
+                                                onClick={() => setSortToggle('asc')}
+                                                className='h-fit on_mobile:hidden border-b-[2px] hover:bg-menu_button_hover hover:px-5 py-[.1rem] w-fit hover:rounded-button transition-all duration-300 ease-cubic-bezier'>
+                                                Oldest
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div className='flex gap-3'>
+                                        <h4 className='font-semibold text-small'>Category:</h4>
+                                        <select
+                                            id="transactionCategory"
+                                            name="transactionCategory"
+                                            value={transactionCategory}
+                                            onChange={(e) => setTransactionCategory(e.target.value)}
+                                            className='outline-none rounded-md text-black px-2 py-[0.125rem] font-normal text-xsmall h-fit'>
+                                            <option value="">All Categories</option>
+                                            {userDoc.transactionTypes.map((transactionType, index) => (
+                                                <option key={index} value={transactionType}>
+                                                    {transactionType}
+                                                </option>
+                                            ))}
+                                        </select>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div>
