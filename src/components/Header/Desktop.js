@@ -51,6 +51,17 @@ export default function Desktop(props) {
                                 </>
                             )}
                         </Link>
+                        <Link to='/income' className='flex gap-3 hover:bg-menu_button_hover h-fit px-3 py-2 my-auto rounded-button font-semibold'>
+                            {window.location.pathname === '/income' ? (
+                                <>
+                                    <p className='text-small text-white'>Income</p>
+                                </>
+                            ) : (
+                                <>
+                                    <p className='text-small'>Income</p>
+                                </>
+                            )}
+                        </Link>
                         <AccountMenu />
                     </div>
                     :

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 
 // Firebase
-import { doc, getDoc, collection, getDocs, runTransaction } from 'firebase/firestore'
+import { doc, collection, getDocs, runTransaction, onSnapshot } from 'firebase/firestore'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth, db } from '../../../firebase'
 
@@ -14,20 +14,14 @@ export default function CurrentCategories() {
     const [userCategories, setUserCategories] = useState([])
 
     useEffect(() => {
-        const getUserDoc = async () => {
-            const docRef = doc(db, 'users', user.uid);
-            const docSnap = await getDoc(docRef);
-
-            if (docSnap.exists()) {
-                setUserCategories(docSnap.data().transactionTypes);
+        const unsubscribe = onSnapshot(
+            doc(db, 'users', user.uid),
+            (doc) => {
+                setUserCategories(doc.data().transactionTypes);
             }
-            else {
-                console.log('No such document!');
-            }
-        };
-
-        if (user) {
-            getUserDoc();
+        );
+        return () => {
+            unsubscribe();
         }
     }, [user, user.uid]);
 
@@ -43,6 +37,13 @@ export default function CurrentCategories() {
             return;
         }
 
+        // confirm deletion
+        const confirmDelete = window.confirm(`Are you sure you want to delete the category "${category}"?`);
+        if (!confirmDelete) {
+            return;
+        }
+        
+
         // remove category from user's transactionTypes array
         await runTransaction(db, async (transaction) => {
             const doc = await transaction.get(userRef);
@@ -53,7 +54,7 @@ export default function CurrentCategories() {
 
 
     return (
-        <div>
+        <div className='flex flex-col gap-3'>
             <h2 className="text-sheader font-semibold">Current Categories</h2>
             <div className='ml-3'>
                 {userCategories !== null ? (

@@ -6,7 +6,7 @@ import AddNewCategory from './AddNewCategory'
 
 export default function Categories() {
     return (
-        <div className="flex gap-5 min-w-fit">
+        <div className="flex gap-20 min-w-fit">
             <div className='w-[28%] min-w-fit'>
                 <CurrentCategories />
             </div>
