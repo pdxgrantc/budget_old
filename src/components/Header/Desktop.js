@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 
 // Firebase
@@ -9,15 +9,23 @@ import { auth, signOutUser } from '../../firebase'
 import { LuLogOut as LogoutIcon } from 'react-icons/lu'
 import { MdOutlineManageAccounts as UserAccountIcon } from 'react-icons/md'
 
-export default function Desktop() {
+export default function Desktop(props) {
     const [user] = useAuthState(auth)
+    const [title, setTitle] = useState('EZ Budget')
+
+    useEffect(() => {
+        if (props.title) {
+            setTitle(props.title)
+        }
+    }, [props.title])
+
 
     return (
         <div className='w-full min-h-[80px] bg-black flex'>
             <div className='w-[5rem]'></div>
             <div className='flex justify-between w-full'>
                 <Link to='/' >
-                    <h1 className='align-middle text-lheader font-bold text'>EZ Budget</h1>
+                    <h1 className='align-middle text-lheader font-bold text'>{title}</h1>
                 </Link>
                 {user ?
                     <div className='flex'>

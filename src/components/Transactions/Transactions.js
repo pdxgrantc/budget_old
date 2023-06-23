@@ -25,15 +25,16 @@ export default function Transactions() {
     } else {
         return (
             <div className='w-screen min-h-screen text-small bg-bg text'>
-                <Header />
-                <div className="mx-[5rem] rounded bg-black py-[2rem] px-[4rem]">
+                <Header title={"Your Transactions"}/>
+                <div className="mx-[5rem]">
                     <div className='flex flex-col'>
-                        <div className='items-baseline h-fit'>
-                            <h1 className='text-lheader font-semibold'>Your Transactions</h1>
-                        </div>
-                        <div className='flex flex-col gap-2'>
-                            <AddNewTransaction />
-                            <PastTransactions />
+                        <div className='flex flex-col gap-[2rem]'>
+                            <div className='bg-black py-[2rem] px-[4rem] rounded-main_box'>
+                                <AddNewTransaction />
+                            </div>
+                            <div className='bg-black py-[2rem] px-[4rem] rounded-main_box'>
+                                <PastTransactions />
+                            </div>
                         </div>
                     </div>
                 </div>
