@@ -79,7 +79,7 @@ module.exports = {
       spacing: {
         '0': '0',
         xsmall: '0.25rem',
-        small : '0.5rem',
+        small: '0.5rem',
         DEFAULT: "1rem",
         large: "2rem",
         xlarge: "3rem",

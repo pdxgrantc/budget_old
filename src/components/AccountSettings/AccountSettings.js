@@ -7,6 +7,7 @@ import { auth } from '../../firebase'
 
 // Components
 import Categories from './Categories/Categories'
+import IncomeSources from './IncomeSettings/IncomeSettings'
 import SignIn from '../SignIn/SignIn'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
@@ -34,6 +35,9 @@ export default function AccountSettings() {
             <div className='flex flex-col gap-[2rem]'>
               <div className='bg-black py-[2rem] px-[4rem] rounded-main_box'>
                 <Categories />
+              </div>
+              <div className='bg-black py-[2rem] px-[4rem] rounded-main_box'>
+              <IncomeSources />
               </div>
             </div>
           </div>
