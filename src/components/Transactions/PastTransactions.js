@@ -103,7 +103,7 @@ export default function PastTransactions() {
                                     value={transactionCategory}
                                     onChange={(e) => setTransactionCategory(e.target.value)}
                                     className='outline-none rounded-md text-black px-2 py-[0.125rem] font-normal text-xsmall h-fit'>
-                                    <option value="">Select a Category</option>
+                                    <option value="">All Categories</option>
                                     {userDoc.transactionTypes.map((transactionType, index) => (
                                         <option key={index} value={transactionType}>
                                             {transactionType}
