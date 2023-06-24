@@ -6,10 +6,11 @@ export default function Footer() {
 
     return (
         <div>
-            <div className='h-[2rem]'></div>
+            <div className='h-[5rem]'></div>
             <div className='h-[50px] flex items-center justify-center'>
                 <h3 className='text-center text-small'>Grant Conklin | {year}</h3>
             </div>
+            <div className='h-[5rem]'></div>
         </div>
     )
 }
