@@ -22,7 +22,7 @@ export default function PastTransactions() {
         const unsubscribe = onSnapshot(
             query(
                 collection(db, 'users', user.uid, 'transactions'),
-                orderBy('transactionDate', sortToggle),
+                orderBy('date', sortToggle),
                 ...(transactionCategory ? [where('category', '==', transactionCategory)] : []),
                 limit(numTransactionsDisplayed)
             ),
@@ -188,19 +188,6 @@ export default function PastTransactions() {
                                                 ))}
                                             </div>
                                         </div>
-                                        {transactions.map((transaction, index) => (
-                                            <div key={transaction.id} className="flex gap-4">
-                                                <p>{index + 1}.</p>
-                                                <p>{transaction.name}</p>
-                                                <p>${parseFloat(transaction.amount).toFixed(2)}</p>
-                                                {transaction.business === '' ? <></> : <p>{transaction.business}</p>}
-                                                <p>{transaction.category}</p>
-                                                <p>{transaction.date.toDate().toLocaleDateString('en-US')}</p>
-                                                <button onClick={() => handleDeleteTransaction(transaction.id)}>
-                                                    <TrashIcon />
-                                                </button>
-                                            </div>
-                                        ))}
                                     </>
                                 )}
                             </div>
