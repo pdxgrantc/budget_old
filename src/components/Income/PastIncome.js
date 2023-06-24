@@ -32,7 +32,6 @@ export default function PastIncome() {
                     setValidCategory(false); // Set validCategory to false if no valid documents found
                 } else {
                     setIncome(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-                    console.log(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
                     setValidCategory(true); // Set validCategory to true if valid documents found
                 }
             }
