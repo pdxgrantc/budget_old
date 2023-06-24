@@ -22,7 +22,7 @@ export default function PastIncome() {
         const unsubscribe = onSnapshot(
             query(
                 collection(db, 'users', user.uid, 'income'),
-                orderBy('incomeDate', sortToggle),
+                orderBy('date', sortToggle),
                 ...(incomeCategory ? [where('category', '==', incomeCategory)] : []),
                 limit(numIncomeDisplayed)
             ),
@@ -32,6 +32,7 @@ export default function PastIncome() {
                     setValidCategory(false); // Set validCategory to false if no valid documents found
                 } else {
                     setIncome(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+                    console.log(snapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
                     setValidCategory(true); // Set validCategory to true if valid documents found
                 }
             }
@@ -141,7 +142,7 @@ export default function PastIncome() {
                                                     <p>{income.name}</p>
                                                     <p>${parseFloat(income.amount).toFixed(2)}</p>
                                                     <p>{income.category}</p>
-                                                    <p>{income.transactionDate.toDate().toLocaleDateString('en-US')}</p>
+                                                    <p>{income.date.toDate().toLocaleDateString('en-US')}</p>
                                                     <button onClick={() => handleDeleteIncome(income.id)}>
                                                         <TrashIcon />
                                                     </button>
