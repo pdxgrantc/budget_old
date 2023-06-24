@@ -55,7 +55,7 @@ module.exports = {
         accent: '#813772',
         dark_grey: '#141414',
         main_bg_color: '#181823',
-        button_grey: '#a9a9a9',
+        button_grey: '#b9b9b9',
         button_grey_hover: '#4e4e4e',
         outline_dark: "#808080",
         menu_bg: '#272727',

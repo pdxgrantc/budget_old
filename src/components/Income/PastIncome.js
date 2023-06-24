@@ -6,7 +6,7 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth, db } from '../../firebase'
 
 // Components
-import { FaRegTrashAlt as TrashIcon } from 'react-icons/fa'
+import DeleteButton from '../Helpers/DeleteButton';
 
 export default function PastIncome() {
     const [user] = useAuthState(auth);
@@ -169,7 +169,7 @@ export default function PastIncome() {
                                                 {income.map((income, index) => (
                                                     <>
                                                         <button key={index} onClick={() => handleDeleteIncome(income.id)}>
-                                                            <TrashIcon />
+                                                            <DeleteButton />
                                                         </button>
                                                         <br />
                                                     </>
