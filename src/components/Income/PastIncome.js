@@ -108,7 +108,6 @@ export default function PastIncome() {
                                         </div>
                                         <div className='flex gap-3'>
                                             <h4 className='font-semibold text-small'>Category:</h4>
-
                                             <select
                                                 id='incomeCategory'
                                                 name='incomeCategory'
