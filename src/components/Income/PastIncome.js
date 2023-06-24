@@ -135,37 +135,37 @@ export default function PastIncome() {
                                     ) : (
                                         <div className="grid grid-custom gap-4 w-fit">
                                             <div className="">
-                                                {/* Column 1: Index */}
+                                                <br />
                                                 {income.map((income, index) => (
                                                     <p key={index} className='whitespace-nowrap'>{index + 1}.</p>
                                                 ))}
                                             </div>
                                             <div className="">
-                                                {/* Column 2: Name */}
+                                            <h5 className='whitespace-nowrap font-semibold'>Name</h5>
                                                 {income.map((income, index) => (
                                                     <p key={index} className='whitespace-nowrap'>{income.name}</p>
                                                 ))}
                                             </div>
                                             <div className="">
-                                                {/* Column 3: Amount */}
+                                            <h5 className='whitespace-nowrap font-semibold'>Amount</h5>
                                                 {income.map((income, index) => (
                                                     <p key={index} className='whitespace-nowrap'>${parseFloat(income.amount).toFixed(2)}</p>
                                                 ))}
                                             </div>
                                             <div className="">
-                                                {/* Column 4: Category */}
+                                            <h5 className='whitespace-nowrap font-semibold'>Category</h5>
                                                 {income.map((income, index) => (
                                                     <p key={index} className='whitespace-nowrap'>{income.category}</p>
                                                 ))}
                                             </div>
                                             <div className="">
-                                                {/* Column 5: Date */}
+                                            <h5 className='whitespace-nowrap font-semibold'>Date</h5>
                                                 {income.map((income, index) => (
                                                     <p key={index}>{income.date.toDate().toLocaleDateString('en-US')}</p>
                                                 ))}
                                             </div>
                                             <div className="">
-                                                {/* Column 6: Button */}
+                                                <br />
                                                 {income.map((income, index) => (
                                                     <>
                                                         <button key={index} onClick={() => handleDeleteIncome(income.id)}>
