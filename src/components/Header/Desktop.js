@@ -106,7 +106,7 @@ function AccountMenu() {
             </button>
             {isOpen && (
                 <ul className='flex flex-col absolute z-10 rounded-md bg-menu_button' style={{ top: "100%", right: 0 }} onMouseLeave={handleMouseLeave} >
-                    <AccountMenuItem text="Budget Settings" link="/budget-settings" />
+                    {/*<AccountMenuItem text="Budget Settings" link="/budget-settings" />*/}
                     <AccountMenuItem text="Account Settings" link="/account-settings" />
                     <button className='hover:bg-menu_button_hover rounded-button px-3 py-2 flex gap-3' onClick={signOutUser}>
                         <p className='text-small'>Sign Out</p>
