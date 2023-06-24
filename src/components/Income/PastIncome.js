@@ -133,20 +133,49 @@ export default function PastIncome() {
                                             <div>No income found for the selected category</div>
                                         )
                                     ) : (
-                                        <>
-                                            {income.map((income, index) => (
-                                                <div key={index} className="flex gap-4">
-                                                    <p>{index + 1}.</p>
-                                                    <p>{income.name}</p>
-                                                    <p>${parseFloat(income.amount).toFixed(2)}</p>
-                                                    <p>{income.category}</p>
-                                                    <p>{income.date.toDate().toLocaleDateString('en-US')}</p>
-                                                    <button onClick={() => handleDeleteIncome(income.id)}>
-                                                        <TrashIcon />
-                                                    </button>
-                                                </div>
-                                            ))}
-                                        </>
+                                        <div className="grid grid-custom gap-4 w-fit">
+                                            <div className="">
+                                                {/* Column 1: Index */}
+                                                {income.map((income, index) => (
+                                                    <p key={index} className='whitespace-nowrap'>{index + 1}.</p>
+                                                ))}
+                                            </div>
+                                            <div className="">
+                                                {/* Column 2: Name */}
+                                                {income.map((income, index) => (
+                                                    <p key={index} className='whitespace-nowrap'>{income.name}</p>
+                                                ))}
+                                            </div>
+                                            <div className="">
+                                                {/* Column 3: Amount */}
+                                                {income.map((income, index) => (
+                                                    <p key={index} className='whitespace-nowrap'>${parseFloat(income.amount).toFixed(2)}</p>
+                                                ))}
+                                            </div>
+                                            <div className="">
+                                                {/* Column 4: Category */}
+                                                {income.map((income, index) => (
+                                                    <p key={index} className='whitespace-nowrap'>{income.category}</p>
+                                                ))}
+                                            </div>
+                                            <div className="">
+                                                {/* Column 5: Date */}
+                                                {income.map((income, index) => (
+                                                    <p key={index}>{income.date.toDate().toLocaleDateString('en-US')}</p>
+                                                ))}
+                                            </div>
+                                            <div className="">
+                                                {/* Column 6: Button */}
+                                                {income.map((income, index) => (
+                                                    <>
+                                                        <button key={index} onClick={() => handleDeleteIncome(income.id)}>
+                                                            <TrashIcon />
+                                                        </button>
+                                                        <br />
+                                                    </>
+                                                ))}
+                                            </div>
+                                        </div>
                                     )}
                                 </div>
                                 {numIncomeDisplayed < totalIncome ? (

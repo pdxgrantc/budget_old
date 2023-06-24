@@ -17,7 +17,7 @@ export default function AccountSettings() {
 
   if (!user) {
     return (
-      <div className='w-screen min-h-screen text-small bg-bg text'>
+      <div className='max-w-screen min-h-screen text-small bg-bg text'>
         <Header />
         <SignIn />
         <Footer />
@@ -25,7 +25,7 @@ export default function AccountSettings() {
     )
   } else {
     return (
-      <div className='w-screen min-h-screen text-small bg-bg text'>
+      <div className='max-w-screen min-h-screen text-small bg-bg text'>
         <Helmet>
           <title>Account Settings</title>
         </Helmet>

@@ -14,7 +14,7 @@ export default function Home() {
 
   if (!user) {
     return (
-      <div className='w-screen min-h-screen text-small bg-bg text'>
+      <div className='max-w-screen min-h-screen text-small bg-bg text'>
         <Header />
         <SignIn />
         <Footer />
@@ -22,7 +22,7 @@ export default function Home() {
     )
   } else {
     return (
-      <div className='w-screen min-h-screen text-small bg-bg text'>
+      <div className='max-w-screen min-h-screen text-small bg-bg text'>
         <Header />
         <div className="mx-[5rem] rounded bg-black py-[2rem] px-[4rem]">
           <div className='items-baseline h-fit'>

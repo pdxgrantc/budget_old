@@ -4,5 +4,13 @@
 @tailwind utilities;
 
 .font-roboto-regular {
-    font-family: 'Roboto', sans-serif;
-  }
+  font-family: 'Roboto', sans-serif;
+}
+
+.grid-cols-custom {
+  grid-template-columns: repeat(6, minmax(1fr));
+}
+
+.grid-custom {
+  grid-template-columns: repeat(6, min-content);
+}

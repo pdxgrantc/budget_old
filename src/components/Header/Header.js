@@ -17,7 +17,7 @@ export default function Header(props) {
         <div className='text-dark_grey'>
             <div className='on_mobile:hidden flex flex-col'>
                 <Desktop title={title} />
-                <div className='h-[2rem]'></div>
+                <div className='h-[3rem]'></div>
             </div>
             <div className='on_desktop:hidden'>
                 <Mobile title={title} />

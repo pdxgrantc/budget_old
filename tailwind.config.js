@@ -23,6 +23,9 @@ module.exports = {
       min_desktop_height: { 'max': '1000px' },
     },
     extend: {
+      gridTemplateColumns: {
+        'auto-fit-min-content': 'repeat(auto-fit, minmax(min-content, 1fr))',
+      },
       textColor: {
         DEFAULT: '#d6d6d6',
         dark_grey: '#cfcfcf',

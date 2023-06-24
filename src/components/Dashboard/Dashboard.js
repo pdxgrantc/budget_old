@@ -15,7 +15,7 @@ export default function Dashboard() {
 
   if (!user) {
     return (
-      <div className='w-screen min-h-screen text-small bg-bg text'>
+      <div className='max-w-screen min-h-screen text-small bg-bg text'>
         <Header />
         <SignIn />
         <Footer />
@@ -23,7 +23,7 @@ export default function Dashboard() {
     )
   } else {
     return (
-      <div className='w-screen min-h-screen text-small bg-bg text'>
+      <div className='max-w-screen min-h-screen text-small bg-bg text'>
         <Helmet>
           <title>Dashboard</title>
         </Helmet>
