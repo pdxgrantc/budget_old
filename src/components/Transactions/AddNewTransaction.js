@@ -74,7 +74,7 @@ export default function AddNewTransaction() {
             transactionDate: dateTimestamp,
         };
 
-        const docRef = doc(db, 'users', user.uid, 'transactions', currentDate.toISOString());
+        const docRef = doc(db, 'users', user.uid, 'transactions', currentDate.toString());
         await setDoc(docRef, transaction);
 
         // clear form
