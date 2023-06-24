@@ -72,9 +72,8 @@ export default function AddNewIncome() {
         };
 
         // add transaction to collection within user document called transactions
-        await setDoc(doc(db, 'users', user.uid), {
-            transactions: [...userDoc.transactions, income],
-        }, { merge: true });
+        const docRef = doc(db, 'users', user.uid, 'income', currentDate.toString());
+        await setDoc(docRef, income);
 
         // reset form
         setIncomeName('');
