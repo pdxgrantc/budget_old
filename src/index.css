@@ -16,5 +16,5 @@
 }
 
 .grid-cols-custom-2 {
-  grid-template-columns: repeat(7, minmax(1fr));
+  grid-template-columns: repeat(7, min-content);
 }

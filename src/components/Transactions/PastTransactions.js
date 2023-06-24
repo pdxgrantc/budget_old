@@ -144,51 +144,56 @@ export default function PastTransactions() {
                                         <div>No transactions found for the selected category</div>
                                     )
                                 ) : (
-                                    <>
-                                        <div className="grid grid-cols-custom-2 gap-4 w-fit">
-                                            <div className="">
-                                                {/* Column 1: Index */}
-                                                {transactions.map((income, index) => (
-                                                    <p key={index} className='whitespace-nowrap'>{index + 1}.</p>
-                                                ))}
-                                            </div>
-                                            <div className="">
-                                                {/* Column 2: Name */}
-                                                {transactions.map((income, index) => (
-                                                    <p key={index} className='whitespace-nowrap'>{income.name}</p>
-                                                ))}
-                                            </div>
-                                            <div className="">
-                                                {/* Column 3: Amount */}
-                                                {transactions.map((income, index) => (
-                                                    <p key={index} className='whitespace-nowrap'>${parseFloat(income.amount).toFixed(2)}</p>
-                                                ))}
-                                            </div>
-                                            <div className="">
-                                                {/* Column 4: Category */}
-                                                {transactions.map((income, index) => (
-                                                    <p key={index} className='whitespace-nowrap'>{income.category}</p>
-                                                ))}
-                                            </div>
-                                            <div className="">
-                                                {/* Column 5: Date */}
-                                                {transactions.map((income, index) => (
-                                                    <p key={index}>{income.date.toDate().toLocaleDateString('en-US')}</p>
-                                                ))}
-                                            </div>
-                                            <div className="">
-                                                {/* Column 6: Button */}
-                                                {transactions.map((income, index) => (
-                                                    <>
-                                                        <button key={index} onClick={() => handleDeleteTransaction(income.id)}>
-                                                            <TrashIcon />
-                                                        </button>
-                                                        <br />
-                                                    </>
-                                                ))}
-                                            </div>
+                                    <div className="grid grid-cols-custom-2 gap-4 w-fit">
+                                        <div className="">
+                                            <br />
+                                            {transactions.map((income, index) => (
+                                                <p key={index} className='whitespace-nowrap'>{index + 1}.</p>
+                                            ))}
                                         </div>
-                                    </>
+                                        <div className="">
+                                            <h5 className='whitespace-nowrap font-semibold'>Name</h5>
+                                            {transactions.map((income, index) => (
+                                                <p key={index} className='whitespace-nowrap'>{income.name}</p>
+                                            ))}
+                                        </div>
+                                        <div className="">
+                                            <h5 className='whitespace-nowrap font-semibold'>Business</h5>
+                                            {transactions.map((income, index) => (
+                                                <p key={index} className='whitespace-nowrap'>{income.business}</p>
+                                            ))}
+                                        </div>
+                                        <div className="">
+                                            <h5 className='whitespace-nowrap font-semibold'>Ammount</h5>
+                                            {/* Column 3: Amount */}
+                                            {transactions.map((income, index) => (
+                                                <p key={index} className='whitespace-nowrap'>${parseFloat(income.amount).toFixed(2)}</p>
+                                            ))}
+                                        </div>
+                                        <div className="">
+                                            <h5 className='whitespace-nowrap font-semibold'>Category</h5>
+                                            {transactions.map((income, index) => (
+                                                <p key={index} className='whitespace-nowrap'>{income.category}</p>
+                                            ))}
+                                        </div>
+                                        <div className="">
+                                            <h5 className='whitespace-nowrap font-semibold'>Date</h5>
+                                            {transactions.map((income, index) => (
+                                                <p key={index}>{income.date.toDate().toLocaleDateString('en-US')}</p>
+                                            ))}
+                                        </div>
+                                        <div className="">
+                                            <br />
+                                            {transactions.map((income, index) => (
+                                                <>
+                                                    <button key={index} onClick={() => handleDeleteTransaction(income.id)}>
+                                                        <TrashIcon />
+                                                    </button>
+                                                    <br />
+                                                </>
+                                            ))}
+                                        </div>
+                                    </div>
                                 )}
                             </div>
                             {numTransactionsDisplayed < totalTransactions ? (
