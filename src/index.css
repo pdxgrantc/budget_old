@@ -14,3 +14,7 @@
 .grid-custom {
   grid-template-columns: repeat(6, min-content);
 }
+
+.grid-cols-custom-2 {
+  grid-template-columns: repeat(7, minmax(1fr));
+}

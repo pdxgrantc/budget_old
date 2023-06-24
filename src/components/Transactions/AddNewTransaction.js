@@ -71,7 +71,7 @@ export default function AddNewTransaction() {
             amount: transactionAmount,
             category: transactionCategory,
             dateCreated: currentDate,
-            transactionDate: dateTimestamp,
+            date: dateTimestamp,
         };
 
         const docRef = doc(db, 'users', user.uid, 'transactions', currentDate.toString());
