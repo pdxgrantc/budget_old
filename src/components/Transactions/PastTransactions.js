@@ -13,6 +13,7 @@ export default function PastTransactions() {
     const [transactions, setTransactions] = useState([]);
     const [numTransactionsDisplayed, setNumTransactionsDisplayed] = useState(50);
     const [totalTransactions, setTotalTransactions] = useState(0);
+    const [userDoc, setUserDoc] = useState(null);
     const [sortToggle, setSortToggle] = useState('desc');
     const [transactionCategory, setTransactionCategory] = useState('');
     const [validCategory, setValidCategory] = useState(true); // Track if the selected category has valid documents
@@ -61,8 +62,6 @@ export default function PastTransactions() {
     const handleLoadMoreTransactions = () => {
         setNumTransactionsDisplayed(numTransactionsDisplayed + 50);
     };
-
-    const [userDoc, setUserDoc] = useState(null);
 
     useEffect(() => {
         const getUserDoc = async () => {
@@ -168,5 +167,9 @@ export default function PastTransactions() {
                 )}
             </>
         );
+    } else {
+        return (
+            <></>
+        )
     }
 }
