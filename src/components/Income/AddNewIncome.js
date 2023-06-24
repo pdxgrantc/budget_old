@@ -91,7 +91,6 @@ export default function AddNewIncome() {
     };
 
 
-
     return (
         <div className='flex flex-col gap-3'>
             <h2 className='text-header font-semibold'>

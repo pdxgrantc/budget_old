@@ -115,7 +115,7 @@ export default function AddNewTransaction() {
                             />
                         </div>
                         <div className='flex gap-3 flex-nowrap'>
-                            <label htmlFor="transactionName">Location:</label>
+                            <label htmlFor="transactionName">Business:</label>
                             <input
                                 type="text"
                                 id="transactionLocation"
@@ -138,29 +138,6 @@ export default function AddNewTransaction() {
                                 className='outline-none rounded-md text-black px-2 py-[0.125rem] font-normal text-xsmall h-fit'
                             />
                         </div>
-                        <div className='flex gap-3 flex-nowrap'>
-                            <label htmlFor="transactionCategory">Category:</label>
-                            <select
-                                id="transactionCategory"
-                                name="transactionCategory"
-                                value={transactionCategory}
-                                onChange={(e) => setTransactionCategory(e.target.value)}
-                                className='outline-none rounded-md text-black px-2 py-[0.125rem] font-normal text-xsmall h-fit'>
-                                <option value="">Select a Category</option>
-                                {userDoc.transactionTypes.map((transactionType, index) => (
-                                    <option key={index} value={transactionType}>
-                                        {transactionType}
-                                    </option>
-                                ))}
-                            </select>
-                        </div>
-                        <Link
-                            to='/account-settings'
-                            className='border-b-[2px] on_desktop:hidden hover:bg-menu_button_hover hover:px-5 py-[.1rem] w-fit font-semibold transition-all duration-300 ease-cubic-bezier'>
-                            <button >
-                                Add New Category
-                            </button>
-                        </Link>
                         <div>
                             <div className='flex flex-nowrap gap-3'>
                                 <label htmlFor="date">Select Date:</label>
@@ -173,13 +150,31 @@ export default function AddNewTransaction() {
                                 />
                             </div>
                         </div>
-                        <Link
-                            to='/account-settings'
-                            className='border-b-[2px] on_mobile:hidden hover:bg-menu_button_hover hover:px-5 py-[.1rem] w-fit hover:rounded-button font-semibold transition-all duration-300 ease-cubic-bezier'>
-                            <button >
-                                Add New Category
-                            </button>
-                        </Link>
+                        <div>
+                            <div className='flex gap-3 flex-nowrap'>
+                                <label htmlFor="transactionCategory">Category:</label>
+                                <select
+                                    id="transactionCategory"
+                                    name="transactionCategory"
+                                    value={transactionCategory}
+                                    onChange={(e) => setTransactionCategory(e.target.value)}
+                                    className='outline-none rounded-md text-black px-2 py-[0.125rem] font-normal text-xsmall h-fit'>
+                                    <option value="">Select a Category</option>
+                                    {userDoc.transactionTypes.map((transactionType, index) => (
+                                        <option key={index} value={transactionType}>
+                                            {transactionType}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                            <Link
+                                to='/account-settings'
+                                className='text-xxsmall border-b-[1px] font-[400] hover:bg-menu_button_hover hover:px-3 py-[2px] w-fit transition-all duration-300 ease-cubic-bezier'>
+                                <button >
+                                    Add New Category
+                                </button>
+                            </Link>
+                        </div>
                     </div>
                     <div className='flex gap'>
                         <button type="submit" onClick={addTransaction} className='border-b-[2px] hover:bg-menu_button_hover hover:px-5 py-1 hover:rounded-button font-semibold transition-all duration-300 ease-cubic-bezier'>
