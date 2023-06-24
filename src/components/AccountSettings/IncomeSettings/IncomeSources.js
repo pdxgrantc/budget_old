@@ -3,7 +3,8 @@ import { doc, onSnapshot, updateDoc, getDoc } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '../../../firebase';
 
-import { FaRegTrashAlt as TrashIcon } from 'react-icons/fa';
+// Components
+import DeleteButton from '../../Helpers/DeleteButton';
 
 export default function IncomeSources() {
     const [user] = useAuthState(auth);
@@ -51,7 +52,7 @@ export default function IncomeSources() {
                             <p>{index + 1}.</p>
                             <p>{incomeSource}</p>
                             <button onClick={() => handleDeleteIncomeSource(incomeSource)} className=" ">
-                                <TrashIcon className="p-1 rounded-full h-[80%] w-full hover:text-black hover:bg-gray-200" />
+                                <DeleteButton />
                             </button>
                         </div>
                     ))

@@ -6,7 +6,7 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth, db } from '../../../firebase'
 
 // Components
-import { FaRegTrashAlt as TrashIcon } from 'react-icons/fa'
+import DeleteButton from '../../Helpers/DeleteButton'
 
 
 export default function CurrentCategories() {
@@ -64,7 +64,7 @@ export default function CurrentCategories() {
                                 <p>{index + 1}.</p>
                                 <p>{category}</p>
                                 <button onClick={() => handleDeleteCategory(category)} className=" ">
-                                    <TrashIcon className='p-1 rounded-full h-[80%] w-full hover:text-black hover:bg-gray-200' />
+                                    <DeleteButton />
                                 </button>
                             </div>
                         ))}
