@@ -87,7 +87,7 @@ export default function PastIncome() {
                     <>
                         <div className='flex flex-col gap-[.65rem]'>
                             <div>
-                                <h2 className="text-header font-semibold">Transactions:</h2>
+                                <h2 className="text-header font-semibold">Income:</h2>
                                 <div className='flex flex-col'>
                                     <h3 className='font-semibold text-large'>Sort by:</h3>
                                     <div className='flex gap-6'>
