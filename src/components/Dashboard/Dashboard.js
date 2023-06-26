@@ -33,7 +33,7 @@ export default function Dashboard() {
         <div className="mx-[5rem] flex flex-col gap-page_break">
           <div className='items-baseline h-fit bg-black py-[2rem] px-[4rem] rounded-main_box'>
             <p className='text-sheader font-thin mb-[-12px]'>Welcome</p>
-            <h1 className='text-lheader font-semibold'>{user.displayName}</h1>
+            <h1 className='text-header font-semibold'>{user.displayName}</h1>
           </div>
           <div className='bg-black py-[2rem] px-[4rem] rounded-main_box'>
             <RecentSpending />
