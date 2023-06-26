@@ -185,12 +185,12 @@ export default function PastTransactions() {
                                         <div className="">
                                             <br />
                                             {transactions.map((income, index) => (
-                                                <>
-                                                    <button key={index} onClick={() => handleDeleteTransaction(income.id)}>
+                                                <div key={index}>
+                                                    <button onClick={() => handleDeleteTransaction(income.id)}>
                                                         <DeleteButton />
                                                     </button>
                                                     <br />
-                                                </>
+                                                </div>
                                             ))}
                                         </div>
                                     </div>
