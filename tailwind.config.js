@@ -5,6 +5,7 @@ module.exports = {
   ],
   theme: {
     gap: {
+      DEFAULT: '1rem',
       page_break: '2.25rem',
       1: '0.25rem',
       2: '0.5rem',
