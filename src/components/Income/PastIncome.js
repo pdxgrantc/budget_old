@@ -167,12 +167,12 @@ export default function PastIncome() {
                                             <div className="">
                                                 <br />
                                                 {income.map((income, index) => (
-                                                    <>
-                                                        <button key={index} onClick={() => handleDeleteIncome(income.id)}>
+                                                    <div key={index}>
+                                                        <button onClick={() => handleDeleteIncome(income.id)}>
                                                             <DeleteButton />
                                                         </button>
                                                         <br />
-                                                    </>
+                                                    </div>
                                                 ))}
                                             </div>
                                         </div>
