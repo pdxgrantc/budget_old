@@ -6,6 +6,8 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth } from '../../firebase'
 
 // Components
+import RecentSpending from './RecentSpending'
+import RecentIncome from './RecentIncome'
 import SignIn from '../SignIn/SignIn'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
@@ -28,10 +30,16 @@ export default function Dashboard() {
           <title>Dashboard</title>
         </Helmet>
         <Header />
-        <div className="mx-[5rem] rounded bg-black py-[2rem] px-[4rem]">
-          <div className='items-baseline h-fit'>
+        <div className="mx-[5rem] flex flex-col gap-page_break">
+          <div className='items-baseline h-fit bg-black py-[2rem] px-[4rem] rounded-main_box'>
             <p className='text-sheader font-thin mb-[-12px]'>Welcome</p>
             <h1 className='text-lheader font-semibold'>{user.displayName}</h1>
+          </div>
+          <div className='bg-black py-[2rem] px-[4rem] rounded-main_box'>
+            <RecentSpending />
+          </div>
+          <div className='bg-black py-[2rem] px-[4rem] rounded-main_box'>
+            <RecentIncome />
           </div>
         </div>
         <Footer />

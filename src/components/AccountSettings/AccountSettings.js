@@ -30,16 +30,12 @@ export default function AccountSettings() {
           <title>Account Settings</title>
         </Helmet>
         <Header title={"Account Settings"} />
-        <div className="mx-[5rem]">
-          <div className='flex flex-col'>
-            <div className='flex flex-col gap-[2rem]'>
-              <div className='bg-black py-[2rem] px-[4rem] rounded-main_box'>
-                <Categories />
-              </div>
-              <div className='bg-black py-[2rem] px-[4rem] rounded-main_box'>
-              <IncomeSources />
-              </div>
-            </div>
+        <div className="mx-[5rem] flex flex-col gap-[2rem]">
+          <div className='bg-black py-[2rem] px-[4rem] rounded-main_box'>
+            <Categories />
+          </div>
+          <div className='bg-black py-[2rem] px-[4rem] rounded-main_box'>
+            <IncomeSources />
           </div>
         </div>
         <Footer />

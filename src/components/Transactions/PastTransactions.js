@@ -17,6 +17,7 @@ export default function PastTransactions() {
     const [sortToggle, setSortToggle] = useState('desc');
     const [transactionCategory, setTransactionCategory] = useState('');
     const [validCategory, setValidCategory] = useState(true); // Track if the selected category has valid documents
+    
 
     useEffect(() => {
         const unsubscribe = onSnapshot(
@@ -50,8 +51,6 @@ export default function PastTransactions() {
             unsubscribe();
         };
     }, [user, user.uid]);
-
-
 
     useEffect(() => {
         const unsubscribe = onSnapshot(query(collection(db, 'users', user.uid, 'transactions')), (snapshot) => {
@@ -90,6 +89,7 @@ export default function PastTransactions() {
             getUserDoc();
         }
     }, [user, user.uid]);
+
 
     if (user) {
         return (
