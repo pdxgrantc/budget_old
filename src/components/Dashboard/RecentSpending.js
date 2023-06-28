@@ -265,7 +265,7 @@ export default function RecentSpending() {
       <h2 className='text-header font-semibold'>
         Recent Spending
       </h2> 
-      <LineGraph label={"Spending"} input={sevenDaySpending} />
+      <LineGraph backgroundColor={"rgba(212, 66, 177, .6)"} borderColor={"rgba(212, 66, 177, 1)"} label={"Spending"} input={sevenDaySpending} />
     </div>
   )
 }

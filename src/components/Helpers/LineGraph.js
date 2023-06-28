@@ -11,6 +11,8 @@ Chart.register(CategoryScale);
 export default function LineGraph(props) {
     const [input, setInput] = useState([0, 0, 0, 0, 0, 0, 0])
     const [label, setLabel] = useState("")
+    const [backgroundColor, setBackgroundColor] = useState("rgba(75,192,192,0.5)")
+    const [borderColor, setBorderColor] = useState("rgba(75,192,192,1)")
 
     useEffect(() => {
         setInput(props.input)
@@ -25,21 +27,40 @@ export default function LineGraph(props) {
         }
     }, [props.label])
 
+    useEffect(() => {
+        if (props.backgroundColor) {
+            setBackgroundColor(props.backgroundColor)
+        }
+        else {
+            setBackgroundColor("rgba(75,192,192,0.5)")
+        }
+    }, [props.backgroundColor])
+
+    useEffect(() => {
+        if (props.borderColor) {
+            setBorderColor(props.borderColor)
+        }
+        else {
+            setBorderColor("rgba(75,192,192,1)")
+        }
+    }, [props.borderColor])
+
+
     const data = {
-        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+        labels: ["7 Days Ago", "6 Days Ago", "5 Days Ago", "4 Days Ago", "3 Days Ago", "2 Days Ago", "Today"],
         datasets: [
             {
                 label: label,
                 data: input,
                 fill: true,
-                backgroundColor: "rgba(75,192,192,0.2)",
-                borderColor: "rgba(75,192,192,1)"
+                backgroundColor: backgroundColor,
+                borderColor: borderColor,
             },
         ]
     };
 
     return (
-        <div className="mx-auto">
+        <div className="w-full">
             <Line data={data} />
         </div>
     );
