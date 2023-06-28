@@ -265,6 +265,7 @@ export default function RecentSpending() {
       <h2 className='text-header font-semibold'>
         Recent Spending
       </h2>
+      <LineGraph data={sevenDaySpending} />
     </div>
   )
 }
