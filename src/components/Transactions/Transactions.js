@@ -29,7 +29,7 @@ export default function Transactions() {
                 <Helmet>
                     <title>Transactions</title>
                 </Helmet>
-                <Header title={"Your Transactions"} />
+                <Header title={"Transactions"} />
                 <div className="mx-[5rem]">
                     <div className='flex flex-col'>
                         <div className='flex flex-col gap-[2rem]'>
