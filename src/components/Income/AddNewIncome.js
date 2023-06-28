@@ -63,9 +63,10 @@ export default function AddNewIncome() {
         var year = dateCache[0];
         var dateTimestamp = new Date(year, month - 1, day);
 
+        // create income object where the ammount is a number
         const income = {
             name: incomeName,
-            amount: IncomeAmmount,
+            amount: Number(IncomeAmmount),
             category: IncomeCategory,
             date: dateTimestamp,
             dateAdded: currentDate,

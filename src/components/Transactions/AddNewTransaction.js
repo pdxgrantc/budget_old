@@ -68,7 +68,7 @@ export default function AddNewTransaction() {
         const transaction = {
             name: transactionName,
             business: transactionBusinessName,
-            amount: transactionAmount,
+            amount: Number(transactionAmount),
             category: transactionCategory,
             dateCreated: currentDate,
             date: dateTimestamp,

@@ -1,17 +1,14 @@
-import React from 'react';
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
-
-
+import React, { useState, useEffect } from 'react'
 
 export default function LineGraph(props) {
+    const [sevenDayIncome, setSevenDayIncome] = useState([0,0,0,0,0,0,0])
+
+    useEffect(() => {
+        setSevenDayIncome(props.sevenDayIncome)
+    }, [props.sevenDayIncome])
+        
+
     return (
-        <LineChart width={600} height={300} data={props.data}>
-            <CartesianGrid strokeDasharray="3 3" />
-            <XAxis dataKey="label" />
-            <YAxis />
-            <Tooltip />
-            <Legend />
-            <Line type="monotone" dataKey="value" stroke="#8884d8" activeDot={{ r: 8 }} />
-        </LineChart>
-    );
+        <div>LineGraph</div>
+    )
 }
