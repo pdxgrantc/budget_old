@@ -55,7 +55,7 @@ export default function LineGraph(props) {
                 ticks: {
                     color: '#d6d6d6', // Change the x-axis label text color here
                     font: {
-                        size: 12 // Change the x-axis label font size here
+                        size: 14 // Change the x-axis label font size here
                     }
                 }
             },
@@ -66,7 +66,7 @@ export default function LineGraph(props) {
                 ticks: {
                     color: '#d6d6d6', // Change the y-axis label text color here
                     font: {
-                        size: 16 // Change the y-axis label font size here
+                        size: 18 // Change the y-axis label font size here
                     }
                 }
             }
@@ -76,7 +76,7 @@ export default function LineGraph(props) {
                 labels: {
                     color: '#d6d6d6', // Change the label text color here
                     font: {
-                        size: 20 // Change the label font size here
+                        size: 18 // Change the label font size here
                     }
                 }
             }
