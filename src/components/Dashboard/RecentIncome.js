@@ -265,7 +265,7 @@ export default function RecentIncome() {
       <h2 className='text-header font-semibold'>
         Recent income
       </h2>
-      <LineGraph data={sevenDayIncome} />
+      <LineGraph label={"Income"} input={sevenDayIncome} />
     </div>
   )
 }

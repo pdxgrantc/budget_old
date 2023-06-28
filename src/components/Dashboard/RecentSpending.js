@@ -264,8 +264,8 @@ export default function RecentSpending() {
     <div className='flex flex-col gap-3'>
       <h2 className='text-header font-semibold'>
         Recent Spending
-      </h2>
-      <LineGraph data={sevenDaySpending} />
+      </h2> 
+      <LineGraph label={"Spending"} input={sevenDaySpending} />
     </div>
   )
 }
