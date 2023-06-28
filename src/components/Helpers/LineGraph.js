@@ -46,6 +46,43 @@ export default function LineGraph(props) {
     }, [props.borderColor])
 
 
+    const options = {
+        scales: {
+            x: {
+                grid: {
+                    color: '#383838' // Change the color of the x-axis lines here
+                },
+                ticks: {
+                    color: '#d6d6d6', // Change the x-axis label text color here
+                    font: {
+                        size: 12 // Change the x-axis label font size here
+                    }
+                }
+            },
+            y: {
+                grid: {
+                    color: '#383838' // Change the color of the x-axis lines here
+                },
+                ticks: {
+                    color: '#d6d6d6', // Change the y-axis label text color here
+                    font: {
+                        size: 16 // Change the y-axis label font size here
+                    }
+                }
+            }
+        },
+        plugins: {
+            legend: {
+                labels: {
+                    color: '#d6d6d6', // Change the label text color here
+                    font: {
+                        size: 20 // Change the label font size here
+                    }
+                }
+            }
+        }
+    };
+
     const data = {
         labels: ["7 Days Ago", "6 Days Ago", "5 Days Ago", "4 Days Ago", "3 Days Ago", "2 Days Ago", "Today"],
         datasets: [
@@ -61,7 +98,7 @@ export default function LineGraph(props) {
 
     return (
         <div className="w-full">
-            <Line data={data} />
+            <Line data={data} options={options} />
         </div>
     );
 }
