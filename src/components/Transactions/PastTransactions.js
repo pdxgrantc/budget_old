@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 
 // Firebase
-import { onSnapshot, collection, query, orderBy, doc, deleteDoc, limit, getDoc, where } from 'firebase/firestore';
+import { setDoc, onSnapshot, collection, query, orderBy, doc, deleteDoc, limit, getDoc, where } from 'firebase/firestore';
 import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth, db } from '../../firebase'
 
@@ -17,7 +17,7 @@ export default function PastTransactions() {
     const [sortToggle, setSortToggle] = useState('desc');
     const [transactionCategory, setTransactionCategory] = useState('');
     const [validCategory, setValidCategory] = useState(true); // Track if the selected category has valid documents
-    
+
 
     useEffect(() => {
         const unsubscribe = onSnapshot(
@@ -62,32 +62,66 @@ export default function PastTransactions() {
     }, [user, user.uid]);
 
     const handleDeleteTransaction = async (id) => {
+        // get transaction reference
         const transactionRef = doc(db, 'users', user.uid, 'transactions', id);
+
         // Confirm deletion with user
         if (window.confirm('Are you sure you want to delete this transaction?')) {
-            await deleteDoc(transactionRef);
+            try {
+                // pull transaction document
+                const transactionDoc = await getDoc(transactionRef);
+
+                // add transaction amount to current balance
+                const newBalance = userDoc.currentBalance + transactionDoc.data().amount;
+
+                console.log("Current Balance: ", userDoc.currentBalance);
+                console.log("Transaction Amount: ", transactionDoc.data().amount);
+
+                console.log("New Balance: ", newBalance);
+
+
+                // update user document with new balance
+                await setDoc(doc(db, 'users', user.uid), { currentBalance: newBalance }, { merge: true }).then(() => {
+                    // delete transaction document
+                    deleteDoc(transactionRef);
+                });
+
+                console.log('newBalance', newBalance);
+            } catch (error) {
+                // handle error if any
+                console.error('Error retrieving transaction document:', error);
+            }
         }
     };
+
 
     const handleLoadMoreTransactions = () => {
         setNumTransactionsDisplayed(numTransactionsDisplayed + 50);
     };
 
     useEffect(() => {
+        let unsubscribe;
+
         const getUserDoc = async () => {
             const docRef = doc(db, 'users', user.uid);
-            const docSnap = await getDoc(docRef);
-
-            if (docSnap.exists()) {
-                setUserDoc(docSnap.data());
-            } else {
-                console.log('No such document!');
-            }
+            unsubscribe = onSnapshot(docRef, (docSnap) => {
+                if (docSnap.exists()) {
+                    setUserDoc(docSnap.data());
+                } else {
+                    console.log('No such document!');
+                }
+            });
         };
 
         if (user) {
             getUserDoc();
         }
+
+        return () => {
+            if (unsubscribe) {
+                unsubscribe();
+            }
+        };
     }, [user, user.uid]);
 
 

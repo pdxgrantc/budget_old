@@ -77,6 +77,12 @@ export default function AddNewTransaction() {
         const docRef = doc(db, 'users', user.uid, 'transactions', currentDate.toString());
         await setDoc(docRef, transaction);
 
+        // set currentBalance in user document to new balance which is old balance - new transaction amount
+        const newBalance = userDoc.currentBalance - Number(transactionAmount);
+        const userDocRef = doc(db, 'users', user.uid);
+        await setDoc(userDocRef, { currentBalance: newBalance }, { merge: true });
+        
+
         // clear form
         setTransactionName('');
         setTransactonBusinessName('');
