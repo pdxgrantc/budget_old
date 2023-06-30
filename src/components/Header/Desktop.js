@@ -67,7 +67,6 @@ export default function Desktop(props) {
                     :
                     <></>
                 }
-
             </div>
             <div className='w-[3rem]'></div>
         </div>

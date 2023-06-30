@@ -1,0 +1,38 @@
+[debug] [2023-06-30T05:27:06.202Z] ----------------------------------------------------------------------
+[debug] [2023-06-30T05:27:06.204Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\pdxgr\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2023-06-30T05:27:06.205Z] CLI Version:   12.0.0
+[debug] [2023-06-30T05:27:06.205Z] Platform:      win32
+[debug] [2023-06-30T05:27:06.206Z] Node Version:  v18.14.2
+[debug] [2023-06-30T05:27:06.207Z] Time:          Thu Jun 29 2023 22:27:06 GMT-0700 (Pacific Daylight Time)
+[debug] [2023-06-30T05:27:06.207Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-06-30T05:27:06.211Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2023-06-30T05:27:06.390Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-06-30T05:27:06.391Z] > authorizing via signed-in user (pdxgrantc@gmail.com)
+[debug] [2023-06-30T05:27:06.391Z] [iam] checking project budget-a4c79 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-06-30T05:27:06.393Z] > refreshing access token with scopes: []
+[debug] [2023-06-30T05:27:06.394Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-06-30T05:27:06.394Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-06-30T05:27:06.593Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2023-06-30T05:27:06.594Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2023-06-30T05:27:06.689Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-06-30T05:27:06.690Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-06-30T05:27:06.713Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/budget-a4c79:testIamPermissions [none]
+[debug] [2023-06-30T05:27:06.713Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/budget-a4c79:testIamPermissions x-goog-quota-user=projects/budget-a4c79
+[debug] [2023-06-30T05:27:06.714Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/budget-a4c79:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-06-30T05:27:07.096Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/budget-a4c79:testIamPermissions 200
+[debug] [2023-06-30T05:27:07.097Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/budget-a4c79:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-06-30T05:27:07.098Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/budget-a4c79 [none]
+[debug] [2023-06-30T05:27:07.559Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/budget-a4c79 200
+[debug] [2023-06-30T05:27:07.560Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/budget-a4c79 {"projectId":"budget-a4c79","projectNumber":"334523129983","displayName":"Budget","name":"projects/budget-a4c79","resources":{"hostingSite":"budget-a4c79"},"state":"ACTIVE","etag":"1_5c8a2ada-5aab-4261-997b-b9dd1d0f379f"}
+[info] 
+[info] === Deploying to 'budget-a4c79'...
+[info] 
+[info] i  deploying hosting 
+[debug] [2023-06-30T05:27:07.589Z] >>> [apiv2][query] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/budget-a4c79/versions [none]
+[debug] [2023-06-30T05:27:07.589Z] >>> [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/budget-a4c79/versions {"status":"CREATED","labels":{"deployment-tool":"cli-firebase"}}
+[debug] [2023-06-30T05:27:08.478Z] <<< [apiv2][status] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/budget-a4c79/versions 200
+[debug] [2023-06-30T05:27:08.479Z] <<< [apiv2][body] POST https://firebasehosting.googleapis.com/v1beta1/projects/-/sites/budget-a4c79/versions {"name":"projects/334523129983/sites/budget-a4c79/versions/b24a0807ae65ef70","status":"CREATED","config":{},"labels":{"deployment-tool":"cli-firebase"}}
+[info] i  hosting[budget-a4c79]: beginning deploy... 
+[info] i  hosting[budget-a4c79]: found 26 files in build 
+[debug] [2023-06-30T05:27:08.533Z] [hosting] uploading with 200 concurrency
