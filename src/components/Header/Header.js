@@ -21,6 +21,7 @@ export default function Header(props) {
             </div>
             <div className='on_desktop:hidden'>
                 <Mobile title={title} />
+                <div className='h-[3rem]'></div>
             </div>
         </div>
     )

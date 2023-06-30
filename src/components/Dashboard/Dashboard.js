@@ -35,11 +35,11 @@ export default function Dashboard() {
             <p className='text-sheader font-thin mb-[-12px]'>Welcome</p>
             <h1 className='text-header font-semibold'>{user.displayName}</h1>
           </div>
-          <div className='grid gap-10 grid-cols-2 bg-black py-[2rem] px-[4rem] rounded-main_box'>
-            <div>
+          <div className='grid gap-10 on_desktop:grid-cols-2 on_desktop:bg-black on_desktop:py-[2rem] on_desktop:px-[4rem] on_desktop:rounded-main_box'>
+            <div className='on_mobile:bg-black on_mobile:py-[2rem] on_mobile:px-[4rem] on_mobile:rounded-main_box'>
               <RecentSpending />
             </div>
-            <div>
+            <div className='on_mobile:bg-black on_mobile:py-[2rem] on_mobile:px-[4rem] on_mobile:rounded-main_box'>
               <RecentIncome />
             </div>
           </div>
