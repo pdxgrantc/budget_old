@@ -26,7 +26,7 @@ export default function Mobile(props) {
       <div className='w-[1.75rem]'></div>
       <div className='flex justify-between w-full'>
         <Link to='/' className='my-auto'>
-          <h1 className='align-middle text-lheader font-bold text on_mobile:text-small my-auto h-fit'>{title}</h1>
+          <h1 className='align-middle text-lheader font-bold text on_mobile:text my-auto h-fit'>{title}</h1>
         </Link>
         {user ?
           <AccountMenu />
@@ -53,7 +53,7 @@ function AccountMenu() {
         <Link to={props.link} className="w-full h-full">
           <p className='whitespace-nowrap text-small'>{props.text}</p>
         </Link>
-        {props.icon}
+        <div className='on_mobile:hidden'>{props.icon}</div>
       </li>
     );
   };
@@ -63,7 +63,7 @@ function AccountMenu() {
       <button
         className="flex gap-3 h-fit px-3 py-2 my-auto rounded-button font-semibold"
         onClick={handleMenuToggle}>
-        <p>My Account</p>
+        <p className='on_mobile:hidden'>My Account</p>
         <MenuIcon className="my-auto" />
       </button>
       {isOpen && (
