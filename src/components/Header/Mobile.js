@@ -49,8 +49,8 @@ function AccountMenu() {
 
   const AccountMenuItem = (props) => {
     return (
-      <li className='hover:bg-menu_button_hover rounded-button px-3 py-2 flex gap-3'>
-        <Link to={props.link} className="">
+      <li className='rounded-button px-3 py-2 flex gap-3'>
+        <Link to={props.link} className="w-full h-full">
           <p className='whitespace-nowrap text-small'>{props.text}</p>
         </Link>
         {props.icon}
@@ -61,7 +61,7 @@ function AccountMenu() {
   return (
     <div className="relative flex flex-col">
       <button
-        className="flex gap-3 hover:bg-menu_button_hover h-fit px-3 py-2 my-auto rounded-button font-semibold"
+        className="flex gap-3 h-fit px-3 py-2 my-auto rounded-button font-semibold"
         onClick={handleMenuToggle}>
         <p>My Account</p>
         <MenuIcon className="my-auto" />
@@ -73,7 +73,7 @@ function AccountMenu() {
           <AccountMenuItem text="Income" link="/income" />
           <AccountMenuItem text="Spending" link="/transactions" />
           <AccountMenuItem text="Account Settings" link="/account-settings" icon={<UserAccountIcon className='my-auto' />} />
-          <button className='hover:bg-menu_button_hover rounded-button px-3 py-2 flex gap-3' onClick={signOutUser}>
+          <button className='rounded-button px-3 py-2 flex gap-3' onClick={signOutUser}>
             <p className='text-small'>Sign Out</p>
             <LogoutIcon className='my-auto' />
           </button>

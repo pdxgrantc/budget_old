@@ -97,7 +97,7 @@ export default function LineGraph(props) {
     };
 
     return (
-        <div className="w-full">
+        <div className="w-full h-auto">
             <Line data={data} options={options} />
         </div>
     );
