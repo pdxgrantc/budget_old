@@ -22,7 +22,7 @@ export default function Mobile(props) {
 
 
   return (
-    <div className='w-full min-h-[80px] bg-mobile_header_bg flex'>
+    <div className='w-full min-h-[60px] bg-mobile_header_bg flex'>
       <div className='w-[1.75rem]'></div>
       <div className='flex justify-between w-full'>
         <Link to='/' className='my-auto'>
