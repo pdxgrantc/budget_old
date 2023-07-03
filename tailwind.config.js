@@ -85,6 +85,7 @@ module.exports = {
         menu_bg: '#272727',
         menu_button: '#2e2e2e',
         menu_button_hover: '#718096',
+        mobile_header_bg: 'rgb(18 18 18)',
       },
       borderRadius: {
         'none': '0',

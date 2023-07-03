@@ -22,8 +22,8 @@ export default function Mobile(props) {
 
 
   return (
-    <div className='w-full min-h-[80px] bg-black flex'>
-      <div className='w-[5rem]'></div>
+    <div className='w-full min-h-[80px] bg-mobile_header_bg flex'>
+      <div className='w-[1.75rem]'></div>
       <div className='flex justify-between w-full'>
         <Link to='/' className='my-auto'>
           <h1 className='align-middle text-lheader font-bold text on_mobile:text-small my-auto h-fit'>{title}</h1>
@@ -34,7 +34,7 @@ export default function Mobile(props) {
           <></>
         }
       </div>
-      <div className='w-[3rem]'></div>
+      <div className='w-[1.5rem]'></div>
     </div>
   )
 }
@@ -68,7 +68,6 @@ function AccountMenu() {
       </button>
       {isOpen && (
         <ul className='flex flex-col absolute z-10 rounded-md bg-menu_button' style={{ top: "100%", right: 0 }} >
-          {/*<AccountMenuItem text="Budget Settings" link="/budget-settings" />*/}
           <AccountMenuItem text="Dashboard" link="/" />
           <AccountMenuItem text="Income" link="/income" />
           <AccountMenuItem text="Spending" link="/transactions" />

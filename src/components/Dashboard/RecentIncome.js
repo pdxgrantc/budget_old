@@ -262,7 +262,7 @@ export default function RecentIncome() {
 
   return (
     <div className='flex flex-col gap-3'>
-      <h2 className='text-header font-semibold'>
+      <h2 className='on_desktop:text-header on_mobile:text-sheader font-semibold'>
         Recent income
       </h2>
       <LineGraph label={"Income"} input={sevenDayIncome} />
