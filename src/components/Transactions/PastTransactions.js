@@ -133,25 +133,25 @@ export default function PastTransactions() {
                         <div>
                             <h2 className="on_desktop:text-header on_mobile:text-large font-semibold">Transactions:</h2>
                             <div className='flex flex-col'>
-                                <h3 className='font-semibold text-large'>Sort by:</h3>
-                                <div className='flex gap-6'>
+                                <h3 className='on_mobile:hidden font-semibold text-large'>Sort by:</h3>
+                                <div className='flex gap-6 flex-wrap'>
                                     <div className='flex gap-3'>
-                                        <h4 className='font-semibold text-small'>Date:</h4>
+                                        <h4 className='on_mobile:hidden font-semibold text-small'>Date:</h4>
                                         <div className='flex gap-3'>
                                             <button
                                                 onClick={() => setSortToggle('desc')}
-                                                className='h-fit on_mobile:hidden border-b-[2px] hover:bg-menu_button_hover hover:px-5 py-[.1rem] w-fit hover:rounded-button transition-all duration-300 ease-cubic-bezier'>
+                                                className='h-fit border-b-[2px] hover:bg-menu_button_hover hover:px-5 py-[.1rem] w-fit hover:rounded-button transition-all duration-300 ease-cubic-bezier'>
                                                 Newest
                                             </button>
                                             <button
                                                 onClick={() => setSortToggle('asc')}
-                                                className='h-fit on_mobile:hidden border-b-[2px] hover:bg-menu_button_hover hover:px-5 py-[.1rem] w-fit hover:rounded-button transition-all duration-300 ease-cubic-bezier'>
+                                                className='h-fit border-b-[2px] hover:bg-menu_button_hover hover:px-5 py-[.1rem] w-fit hover:rounded-button transition-all duration-300 ease-cubic-bezier'>
                                                 Oldest
                                             </button>
                                         </div>
                                     </div>
                                     <div className='flex gap-3'>
-                                        <h4 className='font-semibold text-small'>Category:</h4>
+                                        <h4 className='on_mobile:hidden font-semibold text-small'>Category:</h4>
                                         <select
                                             id="transactionCategory"
                                             name="transactionCategory"
