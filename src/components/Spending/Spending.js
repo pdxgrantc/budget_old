@@ -27,7 +27,7 @@ export default function Spending() {
         return (
             <div className='max-w-screen min-h-screen text-small on_desktop:bg-bg on_mobile:bg-black text'>
                 <Helmet>
-                    <title>Transactions</title>
+                    <title>Spending</title>
                 </Helmet>
                 <Header title={"Spending"} />
                 <div className="on_desktop:mx-[5rem] on_mobile:mx-[1.75rem]">
