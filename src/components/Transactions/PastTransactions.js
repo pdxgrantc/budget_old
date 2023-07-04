@@ -131,7 +131,7 @@ export default function PastTransactions() {
                 {userDoc && userDoc.transactionTypes !== null ? (
                     <div className='flex flex-col gap-[.65rem]'>
                         <div>
-                            <h2 className="text-header font-semibold">Transactions:</h2>
+                            <h2 className="on_desktop:text-header on_mobile:text-large font-semibold">Transactions:</h2>
                             <div className='flex flex-col'>
                                 <h3 className='font-semibold text-large'>Sort by:</h3>
                                 <div className='flex gap-6'>
@@ -169,8 +169,8 @@ export default function PastTransactions() {
                                 </div>
                             </div>
                         </div>
-                        <div>
-                            <div>
+                        <div className='on_mobile:w-full on_mobile:overflow-x-auto'>
+                            <div className='on_mobile:inline-flex'>
                                 {transactions.length === 0 ? (
                                     validCategory ? (
                                         <div>You haven't added any transactions yet</div>

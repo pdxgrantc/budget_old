@@ -102,14 +102,14 @@ export default function AddNewTransaction() {
 
     return (
         <div className='flex flex-col gap-3'>
-            <h2 className='text-header font-semibold'>
+            <h2 className='on_desktop:text-header on_mobile:text-large font-semibold'>
                 Add a New Transaction
             </h2>
             {userDoc && userDoc.transactionTypes !== null ? (
                 <form className='flex flex-col gap'>
                     <div className='grid on_desktop:grid-cols-2 w-fit gap-y-4 gap-x-5 font-semibold'>
                         <div className='flex gap-3 flex-nowrap'>
-                            <label htmlFor="transactionName">Name:</label>
+                            <label className='on_mobile:hidden' htmlFor="transactionName">Name:</label>
                             <input
                                 type="text"
                                 id="transactionName"
@@ -121,7 +121,7 @@ export default function AddNewTransaction() {
                             />
                         </div>
                         <div className='flex gap-3 flex-nowrap'>
-                            <label htmlFor="transactionName">Business:</label>
+                            <label className='on_mobile:hidden' htmlFor="transactionName">Business:</label>
                             <input
                                 type="text"
                                 id="transactionLocation"
@@ -133,7 +133,7 @@ export default function AddNewTransaction() {
                             />
                         </div>
                         <div className='flex gap-3 flex-nowrap'>
-                            <label htmlFor="transactionAmount">Amount:</label>
+                            <label className='on_mobile:hidden' htmlFor="transactionAmount">Amount:</label>
                             <input
                                 type="number"
                                 id="transactionAmount"
@@ -146,7 +146,7 @@ export default function AddNewTransaction() {
                         </div>
                         <div>
                             <div className='flex flex-nowrap gap-3'>
-                                <label htmlFor="date">Select Date:</label>
+                                <label className='on_mobile:hidden' htmlFor="date">Select Date:</label>
                                 <input
                                     type="date"
                                     id="date"
@@ -158,7 +158,7 @@ export default function AddNewTransaction() {
                         </div>
                         <div>
                             <div className='flex gap-3 flex-nowrap'>
-                                <label htmlFor="transactionCategory">Category:</label>
+                                <label className='on_mobile:hidden' htmlFor="transactionCategory">Category:</label>
                                 <select
                                     id="transactionCategory"
                                     name="transactionCategory"
