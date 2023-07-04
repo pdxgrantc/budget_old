@@ -17,7 +17,7 @@ export default function AddNewCategory() {
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
-        setUserCategories(docSnap.data().transactionTypes);
+        setUserCategories(docSnap.data().spendingCategories);
       }
       else {
         console.log('No such document!');
@@ -40,7 +40,7 @@ export default function AddNewCategory() {
     }
 
     await updateDoc(userRef, {
-      transactionTypes: arrayUnion(newCategory)
+      spendingTypes: arrayUnion(newCategory)
     });
 
     setNewCategory('');
