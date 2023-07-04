@@ -6,13 +6,13 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth } from '../../firebase'
 
 // Components
-import AddNewTransaction from './AddNewTransaction'
-import PastTransactions from './PastTransactions'
+import AddSpending from './AddSpending'
+import PastSpending from './PastSpending'
 import SignIn from '../SignIn/SignIn'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 
-export default function Transactions() {
+export default function Spending() {
     const [user] = useAuthState(auth)
 
     if (!user) {
@@ -29,15 +29,15 @@ export default function Transactions() {
                 <Helmet>
                     <title>Transactions</title>
                 </Helmet>
-                <Header title={"Transactions"} />
+                <Header title={"Spending"} />
                 <div className="on_desktop:mx-[5rem] on_mobile:mx-[1.75rem]">
                     <div className='flex flex-col'>
                         <div className='flex flex-col gap-[2rem]'>
                             <div className='bg-black on_desktop:py-[2rem] on_desktop:px-[4rem] rounded-main_box'>
-                                <AddNewTransaction />
+                                <AddSpending />
                             </div>
                             <div className='bg-black on_desktop:py-[2rem] on_desktop:px-[4rem] rounded-main_box'>
-                                <PastTransactions />
+                                <PastSpending />
                             </div>
                         </div>
                     </div>

@@ -8,7 +8,7 @@ import { auth, db } from '../../firebase'
 // Components
 import DeleteButton from '../Helpers/DeleteButton';
 
-export default function PastTransactions() {
+export default function PastSpending() {
     const [user] = useAuthState(auth);
     const [transactions, setTransactions] = useState([]);
     const [numTransactionsDisplayed, setNumTransactionsDisplayed] = useState(50);

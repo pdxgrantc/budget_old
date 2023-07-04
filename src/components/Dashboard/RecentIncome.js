@@ -263,7 +263,7 @@ export default function RecentIncome() {
   return (
     <div className='flex flex-col gap-3'>
       <h2 className='on_desktop:text-header on_mobile:text-sheader font-semibold'>
-        Recent income
+        Recent Income
       </h2>
       <LineGraph label={"Income"} input={sevenDayIncome} />
     </div>

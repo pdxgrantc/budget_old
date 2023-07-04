@@ -6,7 +6,7 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth, db } from '../../firebase'
 import { Link } from 'react-router-dom';
 
-export default function AddNewTransaction() {
+export default function AddSpending() {
     const [transactionName, setTransactionName] = useState('');
     const [transactionBusinessName, setTransactonBusinessName] = useState('');
     const [transactionAmount, setTransactionAmount] = useState('');
