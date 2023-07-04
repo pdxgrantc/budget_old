@@ -12,6 +12,7 @@ import SignIn from '../SignIn/SignIn'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 
+
 export default function Dashboard() {
   const [user] = useAuthState(auth)
 
