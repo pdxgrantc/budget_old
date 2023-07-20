@@ -34,7 +34,7 @@ export const signInWithGoogle = async () => {
                 photoURL: result.user.photoURL,
                 uid: result.user.uid,
                 currentBalance: 0,
-                transactionTypes: ['Groceries', 'Restaurants', 'Household Supplies', 'Rent', 'Bills', 'Repairs and Maintenance', 'Entertainment'],
+                transactionTypes: ['Groceries', 'Gas', 'Restaurants', 'Household Supplies', 'Rent', 'Bills', 'Repairs and Maintenance', 'Entertainment'],
                 incomeSources: ['Paycheck', 'Investments', 'Other'],
                 createdAt: new Date(),
             });
