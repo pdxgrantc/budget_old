@@ -262,9 +262,9 @@ export default function RecentSpending() {
 
   return (
     <div className='flex flex-col gap-3'>
-      <h2 className='text-header font-semibold'>
+      <h2 className='on_desktop:text-header on_mobile:text-sheader font-semibold'>
         Recent Spending
-      </h2> 
+      </h2>
       <LineGraph backgroundColor={"rgba(212, 66, 177, .6)"} borderColor={"rgba(212, 66, 177, 1)"} label={"Spending"} input={sevenDaySpending} />
     </div>
   )

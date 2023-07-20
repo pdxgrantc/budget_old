@@ -84,7 +84,7 @@ export default function LineGraph(props) {
     };
 
     const data = {
-        labels: ["7 Days Ago", "6 Days Ago", "5 Days Ago", "4 Days Ago", "3 Days Ago", "2 Days Ago", "Today"],
+        labels: ["6 Days Ago", "5 Days Ago", "4 Days Ago", "3 Days Ago", "2 Days Ago", "Yesterday", "Today"],
         datasets: [
             {
                 label: label,
@@ -97,7 +97,7 @@ export default function LineGraph(props) {
     };
 
     return (
-        <div className="w-full">
+        <div className="w-full h-auto">
             <Line data={data} options={options} />
         </div>
     );

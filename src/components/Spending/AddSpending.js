@@ -6,11 +6,11 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth, db } from '../../firebase'
 import { Link } from 'react-router-dom';
 
-export default function AddNewTransaction() {
-    const [transactionName, setTransactionName] = useState('');
-    const [transactionBusinessName, setTransactonBusinessName] = useState('');
-    const [transactionAmount, setTransactionAmount] = useState('');
-    const [transactionCategory, setTransactionCategory] = useState('');
+export default function AddSpending() {
+    const [spendingName, setSpendingName] = useState('');
+    const [spendingBusinessName, setSpendingBusinessName] = useState('');
+    const [spendingAmount, setSpendingAmount] = useState('');
+    const [spendingCategory, setSpendingCategory] = useState('');
     const currentDate = new Date();
     const [selectedDate, setSelectedDate] = useState('');
 
@@ -48,13 +48,13 @@ export default function AddNewTransaction() {
         };
     }, [user, user.uid]);
 
-    // add transaction to collection within user document called transactions
-    const addTransaction = async (e) => {
+    // add spendingInstance to collection within user document called spending
+    const addSpending = async (e) => {
         e.preventDefault();
 
         // check if ammount or name is empty
-        if (transactionAmount === '' || transactionName === '' || transactionCategory === '' || (!selectedDate)) {
-            alert('Please enter a name, category, amount, and date for the transaction');
+        if (spendingAmount === '' || spendingName === '' || spendingCategory === '' || (!selectedDate)) {
+            alert('Please enter a name, category, amount, and date for your spending.');
             return;
         }
 
@@ -65,88 +65,88 @@ export default function AddNewTransaction() {
         var year = dateCache[0];
         var dateTimestamp = new Date(year, month - 1, day);
 
-        const transaction = {
-            name: transactionName,
-            business: transactionBusinessName,
-            amount: Number(transactionAmount),
-            category: transactionCategory,
+        const spendingInstance = {
+            name: spendingName,
+            business: spendingBusinessName,
+            amount: Number(spendingAmount),
+            category: spendingCategory,
             dateCreated: currentDate,
             date: dateTimestamp,
         };
 
-        const docRef = doc(db, 'users', user.uid, 'transactions', currentDate.toString());
-        await setDoc(docRef, transaction);
+        const docRef = doc(db, 'users', user.uid, 'spending', currentDate.toString());
+        await setDoc(docRef, spendingInstance);
 
-        // set currentBalance in user document to new balance which is old balance - new transaction amount
-        const newBalance = userDoc.currentBalance - Number(transactionAmount);
+        // set currentBalance in user document to new balance which is old balance - new spending amount
+        const newBalance = userDoc.currentBalance - Number(spendingAmount);
         const userDocRef = doc(db, 'users', user.uid);
         await setDoc(userDocRef, { currentBalance: newBalance }, { merge: true });
-        
+
 
         // clear form
-        setTransactionName('');
-        setTransactonBusinessName('');
-        setTransactionAmount('');
-        setTransactionCategory('');
+        setSpendingName('');
+        setSpendingBusinessName('');
+        setSpendingAmount('');
+        setSpendingCategory('');
         setSelectedDate('');
     };
 
     const ClearForm = () => {
-        setTransactionName('');
-        setTransactonBusinessName('');
-        setTransactionAmount('');
-        setTransactionCategory('');
+        setSpendingName('');
+        setSpendingBusinessName('');
+        setSpendingAmount('');
+        setSpendingCategory('');
         setSelectedDate('');
     };
 
 
     return (
         <div className='flex flex-col gap-3'>
-            <h2 className='text-header font-semibold'>
-                Add a New Transaction
+            <h2 className='on_desktop:text-header on_mobile:text-large font-semibold'>
+                Add New Spending
             </h2>
-            {userDoc && userDoc.transactionTypes !== null ? (
+            {userDoc && userDoc.spendingTypes !== null ? (
                 <form className='flex flex-col gap'>
                     <div className='grid on_desktop:grid-cols-2 w-fit gap-y-4 gap-x-5 font-semibold'>
                         <div className='flex gap-3 flex-nowrap'>
-                            <label htmlFor="transactionName">Name:</label>
+                            <label className='on_mobile:hidden' htmlFor="spendingName">Name:</label>
                             <input
                                 type="text"
-                                id="transactionName"
-                                placeholder='Transaction Name'
-                                name="transactionName"
-                                value={transactionName}
-                                onChange={(e) => setTransactionName(e.target.value)}
+                                id="spendingName"
+                                placeholder='Name'
+                                name="spendingName"
+                                value={spendingName}
+                                onChange={(e) => setSpendingName(e.target.value)}
                                 className='outline-none rounded-md text-black px-2 py-[0.125rem] font-normal text-xsmall h-fit'
                             />
                         </div>
                         <div className='flex gap-3 flex-nowrap'>
-                            <label htmlFor="transactionName">Business:</label>
+                            <label className='on_mobile:hidden' htmlFor="spendingBusiness">Business:</label>
                             <input
                                 type="text"
-                                id="transactionLocation"
+                                id="spendingBusiness"
                                 placeholder='Business Name (optional)'
-                                name="transactionLocation"
-                                value={transactionBusinessName}
-                                onChange={(e) => setTransactonBusinessName(e.target.value)}
+                                name="spendingBusiness"
+                                value={spendingBusinessName}
+                                onChange={(e) => setSpendingBusinessName(e.target.value)}
                                 className='outline-none rounded-md text-black px-2 py-[0.125rem] font-normal text-xsmall h-fit'
                             />
                         </div>
                         <div className='flex gap-3 flex-nowrap'>
-                            <label htmlFor="transactionAmount">Amount:</label>
+                            <label className='on_mobile:hidden' htmlFor="spendingAmount">Amount:</label>
                             <input
                                 type="number"
-                                id="transactionAmount"
-                                placeholder='Transaction Amount'
-                                name="transactionAmount"
-                                value={transactionAmount}
-                                onChange={(e) => setTransactionAmount(e.target.value)}
+                                id="spendingAmount"
+                                placeholder='Amount'
+                                name="spendingAmount"
+                                value={spendingAmount}
+                                onChange={(e) => setSpendingAmount(e.target.value)}
                                 className='outline-none rounded-md text-black px-2 py-[0.125rem] font-normal text-xsmall h-fit'
                             />
                         </div>
                         <div>
                             <div className='flex flex-nowrap gap-3'>
-                                <label htmlFor="date">Select Date:</label>
+                                <label className='on_mobile:hidden' htmlFor="date">Select Date:</label>
                                 <input
                                     type="date"
                                     id="date"
@@ -158,17 +158,17 @@ export default function AddNewTransaction() {
                         </div>
                         <div>
                             <div className='flex gap-3 flex-nowrap'>
-                                <label htmlFor="transactionCategory">Category:</label>
+                                <label className='on_mobile:hidden' htmlFor="spendingCategory">Category:</label>
                                 <select
-                                    id="transactionCategory"
-                                    name="transactionCategory"
-                                    value={transactionCategory}
-                                    onChange={(e) => setTransactionCategory(e.target.value)}
+                                    id="spendingCategory"
+                                    name="spendingCategory"
+                                    value={spendingCategory}
+                                    onChange={(e) => setSpendingCategory(e.target.value)}
                                     className='outline-none rounded-md text-black px-2 py-[0.125rem] font-normal text-xsmall h-fit'>
                                     <option value="">Select a Category</option>
-                                    {userDoc.transactionTypes.map((transactionType, index) => (
-                                        <option key={index} value={transactionType}>
-                                            {transactionType}
+                                    {userDoc.spendingTypes.map((spendingType, index) => (
+                                        <option key={index} value={spendingType}>
+                                            {spendingType}
                                         </option>
                                     ))}
                                 </select>
@@ -183,8 +183,8 @@ export default function AddNewTransaction() {
                         </div>
                     </div>
                     <div className='flex gap'>
-                        <button type="submit" onClick={addTransaction} className='border-b-[2px] hover:bg-menu_button_hover hover:px-5 py-1 hover:rounded-button font-semibold transition-all duration-300 ease-cubic-bezier'>
-                            Add Transaction
+                        <button type="submit" onClick={addSpending} className='border-b-[2px] hover:bg-menu_button_hover hover:px-5 py-1 hover:rounded-button font-semibold transition-all duration-300 ease-cubic-bezier'>
+                            Add Spending
                         </button>
                         <button type="reset" onClick={ClearForm} className='border-b-[2px] hover:bg-menu_button_hover hover:px-5 py-1 hover:rounded-button font-semibold transition-all duration-300 ease-cubic-bezier'>
                             Clear Form

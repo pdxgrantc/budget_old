@@ -17,7 +17,7 @@ export default function CurrentCategories() {
         const unsubscribe = onSnapshot(
             doc(db, 'users', user.uid),
             (doc) => {
-                setUserCategories(doc.data().transactionTypes);
+                setUserCategories(doc.data().spendingTypes);
             }
         );
         return () => {

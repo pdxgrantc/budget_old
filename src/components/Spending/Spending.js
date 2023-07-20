@@ -6,13 +6,13 @@ import { useAuthState } from 'react-firebase-hooks/auth'
 import { auth } from '../../firebase'
 
 // Components
-import AddNewTransaction from './AddNewTransaction'
-import PastTransactions from './PastTransactions'
+import AddSpending from './AddSpending'
+import PastSpending from './PastSpending'
 import SignIn from '../SignIn/SignIn'
 import Header from '../Header/Header'
 import Footer from '../Footer/Footer'
 
-export default function Transactions() {
+export default function Spending() {
     const [user] = useAuthState(auth)
 
     if (!user) {
@@ -25,19 +25,19 @@ export default function Transactions() {
         )
     } else {
         return (
-            <div className='max-w-screen min-h-screen text-small bg-bg text'>
+            <div className='max-w-screen min-h-screen text-small on_desktop:bg-bg on_mobile:bg-black text'>
                 <Helmet>
-                    <title>Transactions</title>
+                    <title>Spending</title>
                 </Helmet>
-                <Header title={"Transactions"} />
-                <div className="mx-[5rem]">
+                <Header title={"Spending"} />
+                <div className="on_desktop:mx-[5rem] on_mobile:mx-[1.75rem]">
                     <div className='flex flex-col'>
                         <div className='flex flex-col gap-[2rem]'>
-                            <div className='bg-black py-[2rem] px-[4rem] rounded-main_box'>
-                                <AddNewTransaction />
+                            <div className='bg-black on_desktop:py-[2rem] on_desktop:px-[4rem] rounded-main_box'>
+                                <AddSpending />
                             </div>
-                            <div className='bg-black py-[2rem] px-[4rem] rounded-main_box'>
-                                <PastTransactions />
+                            <div className='bg-black on_desktop:py-[2rem] on_desktop:px-[4rem] rounded-main_box'>
+                                <PastSpending />
                             </div>
                         </div>
                     </div>
