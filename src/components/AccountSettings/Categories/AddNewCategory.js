@@ -17,7 +17,7 @@ export default function AddNewCategory() {
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
-        setUserCategories(docSnap.data().spendingCategories);
+        setUserCategories(docSnap.data().spendingTypes);
       }
       else {
         console.log('No such document!');
